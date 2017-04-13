@@ -1,4 +1,4 @@
-package controller.entity;
+package models.entities;
 
 public class Product {
 	
