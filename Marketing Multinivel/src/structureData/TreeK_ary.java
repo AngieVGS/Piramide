@@ -2,19 +2,19 @@ package structureData;
 
 public class TreeK_ary<T> {
 	
-	private Node<T> root;
+	private NodeTreeK_ary<T> root;
 
 	public TreeK_ary() {
 		this.root = null;
 	}
 	
 	public boolean Add(T info,T father){
-		Node<T> nodeAdd = new Node<T>(info);
+		NodeTreeK_ary<T> nodeAdd = new NodeTreeK_ary<T>(info);
 		if (root == null) {
-			root = new Node<T>(info);
+			root = new NodeTreeK_ary<T>(info);
 			return true;
 		}else{
-			Node<T> nodeFather = find(father);
+			NodeTreeK_ary<T> nodeFather = find(father);
 			if (nodeFather != null) {
 				addSonFather(nodeFather, nodeAdd);
 				return true;
@@ -24,8 +24,8 @@ public class TreeK_ary<T> {
 		}
 	}
 
-	private void addSonFather(Node<T> father, Node<T> nodeAdd){
-		Node<T> aux = father.firtsSon;
+	private void addSonFather(NodeTreeK_ary<T> father, NodeTreeK_ary<T> nodeAdd){
+		NodeTreeK_ary<T> aux = father.firtsSon;
 		if (aux == null) {
 			father.firtsSon = nodeAdd;
 		}else{
@@ -37,8 +37,8 @@ public class TreeK_ary<T> {
 	}
 	
 	
-	public Node<T> find(T info) {
-		Node<T> node = root;
+	public NodeTreeK_ary<T> find(T info) {
+		NodeTreeK_ary<T> node = root;
 		if (node == null) {
 			return null;
 		}else{
@@ -51,8 +51,8 @@ public class TreeK_ary<T> {
 		}
 	}
 	
-	private Node<T> findSearchSon(Node<T> father, T info){
-		Node<T> nodeAux = father;
+	private NodeTreeK_ary<T> findSearchSon(NodeTreeK_ary<T> father, T info){
+		NodeTreeK_ary<T> nodeAux = father;
 		while (nodeAux != null) {
 			if (nodeAux.info.equals(info)) {
 				return nodeAux;
