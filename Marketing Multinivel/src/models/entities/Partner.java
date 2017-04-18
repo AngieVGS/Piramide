@@ -13,7 +13,7 @@ public class Partner {
 		this.name = name;
 		this.birthday = birthday;
 	}
-	
+
 	public int getId() {
 		return id;
 	}
@@ -36,5 +36,10 @@ public class Partner {
 
 	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
+	}
+
+	@Override
+	public String toString() {
+		return "Partner [id=" + id + ", name=" + name + ", birthday=" + birthday + "]";
 	}
 }
