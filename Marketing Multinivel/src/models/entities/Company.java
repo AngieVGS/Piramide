@@ -37,4 +37,13 @@ public class Company {
 	public void addOrder(Order order) {
 		orderList.add(order);
 	}
+	
+	/**
+	 * Método que agrega un socio y su referido al árbol
+	 * @param partner es el referido
+	 * @param partnerFather es el socio padre, es decir, quien refirio a partner
+	 */
+	public void addPartner(Partner partner, Partner partnerFather) {
+		partnersTree.add(partner, partnerFather);
+	}
 }

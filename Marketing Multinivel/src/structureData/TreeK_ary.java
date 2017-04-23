@@ -8,10 +8,10 @@ public class TreeK_ary<T> {
 		this.root = null;
 	}
 
-	public boolean add(T info, T father) {
-		NodeTreeK_ary<T> nodeAdd = new NodeTreeK_ary<T>(info);
+	public boolean add(T partner, T father) {
+		NodeTreeK_ary<T> nodeAdd = new NodeTreeK_ary<T>(partner);
 		if (root == null) {
-			root = new NodeTreeK_ary<T>(info);
+			root = new NodeTreeK_ary<T>(partner);
 			return true;
 		} else {
 			NodeTreeK_ary<T> nodeFather = find(father);
