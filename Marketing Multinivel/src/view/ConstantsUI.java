@@ -30,8 +30,13 @@ public class ConstantsUI {
 	public static final Color COLOR_FOUND = Color.decode("#00405d");
 	public static final Color COLOR_TABLE_MANAGER = Color.decode("#062f3c");
 	public static final Font FONT_LETTER_TABLE = new Font("Ahaori", Font.BOLD, 18);
-	public static final String SENTENCE_PARTNER = "Partner";
+	public static final String SENTENCE_PARTNER = "Partners";
 	public static final Icon IMG_TAB_PARTNER = new ImageIcon("src/img/partner.png");
-	public static final String SENTENCE_PRODUCT = "Product";
+	public static final String SENTENCE_PRODUCT = "Products";
 	public static final Icon IMG_TAB_PRODUCT = new ImageIcon("src/img/product.png");
+	public static final Color COLOR_SELECTION_BACKGROUND = Color.decode("#2b82ad");
+	public static final String SENTENCE_ORDERS = "Orders";
+	public static final Icon IMG_TAB_ORDER = new ImageIcon("src/img/order.png");
+	public static final String SENTENCE_FILE = "File";
+	public static final String SENTENCE_ADD_PARTNER = "Add Partner";
 }

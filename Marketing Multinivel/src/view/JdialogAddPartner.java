@@ -20,7 +20,6 @@ import models.entities.Genre;
 import models.entities.Partner;
 import models.errores.ValidateFields;
 
-
 public class JdialogAddPartner extends JDialog {
 	private static final long serialVersionUID = 1L;
 	private JLabel lbId, lbpartner;
@@ -35,7 +34,7 @@ public class JdialogAddPartner extends JDialog {
 		setModal(true);
 		setResizable(false);
 		setLocationRelativeTo(null);
-		setIconImage( new ImageIcon(getClass().getResource("/img/iconAdd.png")).getImage());
+		setIconImage(new ImageIcon(getClass().getResource("/img/iconAdd.png")).getImage());
 		setTitle("Nuevo socio");
 		setDefaultCloseOperation(HIDE_ON_CLOSE);
 		setLayout(new GridBagLayout());
@@ -208,7 +207,6 @@ public class JdialogAddPartner extends JDialog {
 		lbValue.setHorizontalAlignment(SwingConstants.RIGHT);
 		add(lbValue, gbc);
 
-	
 		spinerStratum = new JSpinner(new SpinnerNumberModel(1, 1, 6, 1));
 		gbc.gridx = 1;
 		gbc.gridy = 7;
@@ -229,8 +227,7 @@ public class JdialogAddPartner extends JDialog {
 		gbc.weighty = 1.0;
 		gbc.fill = GridBagConstraints.BOTH;
 		add(lbpartner, gbc);
-		
-		
+
 		gbc.gridx = 1;
 		gbc.gridy = 8;
 		gbc.gridwidth = 1;
@@ -240,9 +237,9 @@ public class JdialogAddPartner extends JDialog {
 		gbc.fill = GridBagConstraints.BOTH;
 		txtPartner = new JTextField();
 		add(txtPartner, gbc);
-		
+
 		gbc.insets.set(20, 130, 2, -40);
-		
+
 		gbc.gridx = 0;
 		gbc.gridy = 9;
 		gbc.gridwidth = 1;
@@ -254,14 +251,12 @@ public class JdialogAddPartner extends JDialog {
 		btnAdd.setForeground(Color.WHITE);
 		btnAdd.setBackground(Color.decode("#062f3c"));
 		add(btnAdd, gbc);
-		
-		setVisible(true);
 	}
-	
+
 	public static void main(String[] args) {
 		new JdialogAddPartner();
 	}
-	
+
 	public void cleanFields() {
 		txtId.setText("");
 		txtIdLegal.setText("");
@@ -273,8 +268,8 @@ public class JdialogAddPartner extends JDialog {
 		registerDate.setDate(null);
 		birthDate.setDate(null);
 	}
-	
+
 	public Partner getCreatedPerson() {
 		return new Partner(Integer.parseInt(txtId.getText()), txtName.getText(), birthDate.getDate());
-		}
+	}
 }
