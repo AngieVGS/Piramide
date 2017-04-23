@@ -18,9 +18,9 @@ import com.toedter.calendar.JDateChooser;
 
 import controller.Actions;
 import controller.Controller;
+import exceptions.ValidateFields;
 import models.entities.Genre;
 import models.entities.Partner;
-import models.errores.ValidateFields;
 
 public class JdialogAddPartner extends JDialog {
 	private static final long serialVersionUID = 1L;

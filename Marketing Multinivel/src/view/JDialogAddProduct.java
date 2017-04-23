@@ -14,8 +14,8 @@ import javax.swing.SwingConstants;
 
 import controller.Actions;
 import controller.Controller;
+import exceptions.ValidateFields;
 import models.entities.Genre;
-import models.errores.ValidateFields;
 
 public class JDialogAddProduct extends JDialog{
 	private static final long serialVersionUID = 1L;

@@ -1,4 +1,4 @@
-package models.errores;
+package exceptions;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;

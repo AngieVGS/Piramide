@@ -1,4 +1,4 @@
-package models.errores;
+package exceptions;
 
 public class ErrorDates extends Exception{
 

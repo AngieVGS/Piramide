@@ -1,6 +1,8 @@
 package models.entities;
 
 import java.util.Date;
+
+import exceptions.ErrorNotFound;
 import structureData.NodeSimpleList;
 import structureData.SimpleList;
 import structureData.TreeK_ary;
@@ -86,7 +88,7 @@ public class Company {
 		return null;
 	}
 
-	public Order searchOrder(int id) {
+	public Order searchOrder(int id) throws ErrorNotFound{
 		// TO-DO SEARCH
 		NodeSimpleList<Order> auxOrder = orderList.getHead();
 		while (auxOrder != null) {
@@ -95,11 +97,10 @@ public class Company {
 			}
 			auxOrder = auxOrder.getNext();
 		}
-		// LANZAR EXCEPTION
-		return null;
+		throw new ErrorNotFound();
 	}
 
-	public Product searchProduct(int id) {
+	public Product searchProduct(int id) throws ErrorNotFound{
 		NodeSimpleList<Product> auxProduct = productList.getHead();
 		while (auxProduct != null) {
 			if (auxProduct.getInformation().getId() == id) {
@@ -107,8 +108,7 @@ public class Company {
 			}
 			auxProduct = auxProduct.getNext();
 		}
-		// LANZAR EXCEPTION
-		return null;
+		throw new ErrorNotFound();
 	}
 
 	public void editPartner(int idOldPartner, Partner newPartner) throws Exception {
