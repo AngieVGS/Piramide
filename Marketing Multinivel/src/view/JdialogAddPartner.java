@@ -9,32 +9,34 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
-import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.SwingConstants;
 
+import com.toedter.calendar.JDateChooser;
+
 import controller.Genre;
+import models.entities.Partner;
 import models.errores.ValidateFields;
 
 
 public class JdialogAddPartner extends JDialog {
 	private static final long serialVersionUID = 1L;
-	private JLabel lbImage, lbTextId, lbpartner;
+	private JLabel lbId, lbpartner;
 	private JTextField txtId, txtIdLegal, txtName, txtSurname, txtPartner;
-	private JTextArea txtDescription;
 	private JSpinner spinerStratum;
 	private JComboBox<Genre> cbxGenre;
 	private JButton btnAdd;
+	private JDateChooser registerDate, birthDate;
 
 	public JdialogAddPartner() {
-		setSize(500, 500);
+		setSize(450, 450);
 		setModal(true);
+		setResizable(false);
 		setLocationRelativeTo(null);
 		setIconImage( new ImageIcon(getClass().getResource("/img/iconAdd.png")).getImage());
-		setTitle("Agregar nuevo socio");
+		setTitle("Nuevo socio");
 		setDefaultCloseOperation(HIDE_ON_CLOSE);
 		setLayout(new GridBagLayout());
 		getContentPane().setBackground(Color.WHITE);
@@ -49,10 +51,10 @@ public class JdialogAddPartner extends JDialog {
 		gbc.weightx = 0.5;
 		gbc.weighty = 1.0;
 		gbc.fill = GridBagConstraints.BOTH;
-		lbImage = new JLabel("Id: ");
-		lbImage.setSize(50, 50);
-		lbImage.setHorizontalAlignment(SwingConstants.RIGHT);
-		add(lbImage, gbc);
+		lbId = new JLabel("Id: ");
+		lbId.setSize(50, 50);
+		lbId.setHorizontalAlignment(SwingConstants.RIGHT);
+		add(lbId, gbc);
 
 		gbc.gridx = 1;
 		gbc.gridy = 0;
@@ -72,9 +74,9 @@ public class JdialogAddPartner extends JDialog {
 		gbc.weightx = 1.0;
 		gbc.weighty = 0.0;
 		gbc.fill = GridBagConstraints.BOTH;
-		lbTextId = new JLabel("Fecha de registro: ");
-		lbTextId.setHorizontalAlignment(SwingConstants.RIGHT);
-		add(lbTextId, gbc);
+		JLabel lbDateRegister = new JLabel("Fecha de registro: ");
+		lbDateRegister.setHorizontalAlignment(SwingConstants.RIGHT);
+		add(lbDateRegister, gbc);
 
 		gbc.gridx = 1;
 		gbc.gridy = 1;
@@ -83,9 +85,8 @@ public class JdialogAddPartner extends JDialog {
 		gbc.weightx = 5.0;
 		gbc.weighty = 1.0;
 		gbc.fill = GridBagConstraints.BOTH;
-		txtId = new JTextField();
-		ValidateFields.onlyNumber(txtId);
-		add(txtId, gbc);
+		registerDate = new JDateChooser();
+		add(registerDate, gbc);
 
 		gbc.gridx = 0;
 		gbc.gridy = 2;
@@ -94,9 +95,9 @@ public class JdialogAddPartner extends JDialog {
 		gbc.weightx = 1.0;
 		gbc.weighty = 0.0;
 		gbc.fill = GridBagConstraints.BOTH;
-		JLabel lbName = new JLabel("Id Legal: ");
-		lbName.setHorizontalAlignment(SwingConstants.RIGHT);
-		add(lbName, gbc);
+		JLabel lbIdLegal = new JLabel("Id Legal: ");
+		lbIdLegal.setHorizontalAlignment(SwingConstants.RIGHT);
+		add(lbIdLegal, gbc);
 
 		gbc.gridx = 1;
 		gbc.gridy = 2;
@@ -172,6 +173,7 @@ public class JdialogAddPartner extends JDialog {
 		gbc.weighty = 1.0;
 		gbc.fill = GridBagConstraints.BOTH;
 		cbxGenre = new JComboBox<>(Genre.values());
+		cbxGenre.setSelectedItem(Genre.UNSPECIFIED);
 		add(cbxGenre, gbc);
 
 		gbc.gridx = 0;
@@ -192,18 +194,8 @@ public class JdialogAddPartner extends JDialog {
 		gbc.weightx = 5.0;
 		gbc.weighty = 1.0;
 		gbc.fill = GridBagConstraints.BOTH;
-		txtDescription = new JTextArea();
-		add(txtDescription, gbc);
-
-		JScrollPane scroll = new JScrollPane(txtDescription);
-		gbc.gridx = 1;
-		gbc.gridy = 6;
-		gbc.gridwidth = 1;
-		gbc.gridheight = 1;
-		gbc.weightx = 5.0;
-		gbc.weighty = 1.0;
-		gbc.fill = GridBagConstraints.BOTH;
-		add(scroll, gbc);
+		birthDate = new JDateChooser();
+		add(birthDate, gbc);
 
 		gbc.gridx = 0;
 		gbc.gridy = 7;
@@ -249,7 +241,7 @@ public class JdialogAddPartner extends JDialog {
 		txtPartner = new JTextField();
 		add(txtPartner, gbc);
 		
-		gbc.insets.set(20, 120, 4, -60);
+		gbc.insets.set(20, 130, 2, -40);
 		
 		gbc.gridx = 0;
 		gbc.gridy = 9;
@@ -259,6 +251,8 @@ public class JdialogAddPartner extends JDialog {
 		gbc.weighty = 1;
 		gbc.fill = GridBagConstraints.BOTH;
 		btnAdd = new JButton("Agregar socio", new ImageIcon(getClass().getResource("/img/check.png")));
+		btnAdd.setForeground(Color.WHITE);
+		btnAdd.setBackground(Color.decode("#062f3c"));
 		add(btnAdd, gbc);
 		
 		setVisible(true);
@@ -267,4 +261,20 @@ public class JdialogAddPartner extends JDialog {
 	public static void main(String[] args) {
 		new JdialogAddPartner();
 	}
+	
+	public void cleanFields() {
+		txtId.setText("");
+		txtIdLegal.setText("");
+		txtName.setText("");
+		txtSurname.setText("");
+		txtPartner.setText("");
+		spinerStratum.setValue(1);
+		cbxGenre.setSelectedItem(Genre.UNSPECIFIED);
+		registerDate.setDate(null);
+		birthDate.setDate(null);
+	}
+	
+	public Partner getCreatedPerson() {
+		return new Partner(Integer.parseInt(txtId.getText()), txtName.getText(), birthDate.getDate());
+		}
 }
