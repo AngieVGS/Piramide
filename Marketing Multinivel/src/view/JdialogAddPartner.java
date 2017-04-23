@@ -13,6 +13,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.SpinnerNumberModel;
 import javax.swing.SwingConstants;
 
 import controller.Genre;
@@ -21,19 +22,19 @@ import models.errores.ValidateFields;
 
 public class JdialogAddPartner extends JDialog {
 	private static final long serialVersionUID = 1L;
-	private JLabel lbImage, lbId;
-	private JTextField txtId, txtName, txtValue;
+	private JLabel lbImage, lbTextId, lbpartner;
+	private JTextField txtId, txtIdLegal, txtName, txtSurname, txtPartner;
 	private JTextArea txtDescription;
-	private JSpinner spinerNumberProduct;
-	private JComboBox<Genre> cbxTypePerson;
-//private JComboBox<TypeProduct> cbxTypeProduct;
-	private JButton btnCreate, btnAddImage;
+	private JSpinner spinerStratum;
+	private JComboBox<Genre> cbxGenre;
+	private JButton btnAdd;
 
 	public JdialogAddPartner() {
 		setSize(500, 500);
 		setModal(true);
-		setTitle("Crud-Product 1.0");
-		//setIconImage(new ImageIcon(getClass().getResource("/imgs/icon.png")).getImage());
+		setLocationRelativeTo(null);
+		setIconImage( new ImageIcon(getClass().getResource("/img/iconAdd.png")).getImage());
+		setTitle("Agregar nuevo socio");
 		setDefaultCloseOperation(HIDE_ON_CLOSE);
 		setLayout(new GridBagLayout());
 		getContentPane().setBackground(Color.WHITE);
@@ -46,9 +47,9 @@ public class JdialogAddPartner extends JDialog {
 		gbc.gridwidth = 1;
 		gbc.gridheight = 1;
 		gbc.weightx = 0.5;
-		gbc.weighty = 2.0;
+		gbc.weighty = 1.0;
 		gbc.fill = GridBagConstraints.BOTH;
-		lbImage = new JLabel("Id");
+		lbImage = new JLabel("Id: ");
 		lbImage.setSize(50, 50);
 		lbImage.setHorizontalAlignment(SwingConstants.RIGHT);
 		add(lbImage, gbc);
@@ -57,14 +58,12 @@ public class JdialogAddPartner extends JDialog {
 		gbc.gridy = 0;
 		gbc.gridwidth = 1;
 		gbc.gridheight = 1;
-		gbc.weightx = 1.0;
-		gbc.weighty = 0.0;
+		gbc.weightx = 5.0;
+		gbc.weighty = 1.0;
 		gbc.fill = GridBagConstraints.BOTH;
-		btnAddImage = new JButton("New Image");
-		btnAddImage.setBackground(Color.decode("#FAAC58"));
-		//btnAddImage.addActionListener(controller);
-		//btnAddImage.setActionCommand(Action.ADD_IMAGE.name());
-		add(btnAddImage, gbc);
+		txtId = new JTextField();
+		ValidateFields.onlyLetter(txtId);
+		add(txtId, gbc);
 
 		gbc.gridx = 0;
 		gbc.gridy = 1;
@@ -73,9 +72,9 @@ public class JdialogAddPartner extends JDialog {
 		gbc.weightx = 1.0;
 		gbc.weighty = 0.0;
 		gbc.fill = GridBagConstraints.BOTH;
-		lbId = new JLabel("Id");
-		lbId.setHorizontalAlignment(SwingConstants.RIGHT);
-		add(lbId, gbc);
+		lbTextId = new JLabel("Fecha de registro: ");
+		lbTextId.setHorizontalAlignment(SwingConstants.RIGHT);
+		add(lbTextId, gbc);
 
 		gbc.gridx = 1;
 		gbc.gridy = 1;
@@ -95,7 +94,7 @@ public class JdialogAddPartner extends JDialog {
 		gbc.weightx = 1.0;
 		gbc.weighty = 0.0;
 		gbc.fill = GridBagConstraints.BOTH;
-		JLabel lbName = new JLabel("Name");
+		JLabel lbName = new JLabel("Id Legal: ");
 		lbName.setHorizontalAlignment(SwingConstants.RIGHT);
 		add(lbName, gbc);
 
@@ -106,9 +105,9 @@ public class JdialogAddPartner extends JDialog {
 		gbc.weightx = 5.0;
 		gbc.weighty = 1.0;
 		gbc.fill = GridBagConstraints.BOTH;
-		txtName = new JTextField();
-		ValidateFields.onlyLetter(txtName);
-		add(txtName, gbc);
+		txtIdLegal = new JTextField();
+		ValidateFields.onlyLetter(txtIdLegal);
+		add(txtIdLegal, gbc);
 
 		gbc.gridx = 0;
 		gbc.gridy = 3;
@@ -117,7 +116,7 @@ public class JdialogAddPartner extends JDialog {
 		gbc.weightx = 1.0;
 		gbc.weighty = 0.0;
 		gbc.fill = GridBagConstraints.BOTH;
-		JLabel lbNumberProduct = new JLabel("Number");
+		JLabel lbNumberProduct = new JLabel("Nombre: ");
 		lbNumberProduct.setHorizontalAlignment(SwingConstants.RIGHT);
 		add(lbNumberProduct, gbc);
 
@@ -128,8 +127,9 @@ public class JdialogAddPartner extends JDialog {
 		gbc.weightx = 5.0;
 		gbc.weighty = 1.0;
 		gbc.fill = GridBagConstraints.BOTH;
-		spinerNumberProduct = new JSpinner();
-		add(spinerNumberProduct, gbc);
+		txtName = new JTextField();
+		ValidateFields.onlyLetter(txtName);
+		add(txtName, gbc);
 
 		gbc.gridx = 0;
 		gbc.gridy = 4;
@@ -138,7 +138,7 @@ public class JdialogAddPartner extends JDialog {
 		gbc.weightx = 1.0;
 		gbc.weighty = 0.0;
 		gbc.fill = GridBagConstraints.BOTH;
-		JLabel lbTypePerson = new JLabel("Type Person");
+		JLabel lbTypePerson = new JLabel("Apellido: ");
 		lbTypePerson.setHorizontalAlignment(SwingConstants.RIGHT);
 		add(lbTypePerson, gbc);
 
@@ -149,8 +149,9 @@ public class JdialogAddPartner extends JDialog {
 		gbc.weightx = 5.0;
 		gbc.weighty = 1.0;
 		gbc.fill = GridBagConstraints.BOTH;
-	//	cbxTypePerson = new JComboBox<>(TypePerson.values());
-	//  add(cbxTypePerson, gbc);
+		txtSurname = new JTextField();
+		ValidateFields.onlyLetter(txtSurname);
+		add(txtSurname, gbc);
 
 		gbc.gridx = 0;
 		gbc.gridy = 5;
@@ -159,7 +160,7 @@ public class JdialogAddPartner extends JDialog {
 		gbc.weightx = 5.0;
 		gbc.weighty = 1.0;
 		gbc.fill = GridBagConstraints.BOTH;
-		JLabel lbTypeProduct = new JLabel("Type Product");
+		JLabel lbTypeProduct = new JLabel("Genero: ");
 		lbTypeProduct.setHorizontalAlignment(SwingConstants.RIGHT);
 		add(lbTypeProduct, gbc);
 
@@ -170,8 +171,8 @@ public class JdialogAddPartner extends JDialog {
 		gbc.weightx = 5.0;
 		gbc.weighty = 1.0;
 		gbc.fill = GridBagConstraints.BOTH;
-		// cbxTypeProduct = new JComboBox<>(TypeProduct.values());
-		// add(cbxTypeProduct, gbc);
+		cbxGenre = new JComboBox<>(Genre.values());
+		add(cbxGenre, gbc);
 
 		gbc.gridx = 0;
 		gbc.gridy = 6;
@@ -180,7 +181,7 @@ public class JdialogAddPartner extends JDialog {
 		gbc.weightx = 5.0;
 		gbc.weighty = 1.0;
 		gbc.fill = GridBagConstraints.BOTH;
-		JLabel lbDescription = new JLabel("Description");
+		JLabel lbDescription = new JLabel("Fecha de nacimiento: ");
 		lbDescription.setHorizontalAlignment(SwingConstants.RIGHT);
 		add(lbDescription, gbc);
 
@@ -211,12 +212,12 @@ public class JdialogAddPartner extends JDialog {
 		gbc.weightx = 5.0;
 		gbc.weighty = 1.0;
 		gbc.fill = GridBagConstraints.BOTH;
-		JLabel lbValue = new JLabel("Value");
+		JLabel lbValue = new JLabel("Estrato: ");
 		lbValue.setHorizontalAlignment(SwingConstants.RIGHT);
 		add(lbValue, gbc);
 
-		txtValue = new JTextField();
-		ValidateFields.onlyNumber(txtValue);
+	
+		spinerStratum = new JSpinner(new SpinnerNumberModel(1, 1, 6, 1));
 		gbc.gridx = 1;
 		gbc.gridy = 7;
 		gbc.gridwidth = 1;
@@ -224,21 +225,41 @@ public class JdialogAddPartner extends JDialog {
 		gbc.weightx = 5.0;
 		gbc.weighty = 1.0;
 		gbc.fill = GridBagConstraints.BOTH;
-		txtDescription = new JTextArea();
-		add(txtValue, gbc);
+		add(spinerStratum, gbc);
 
-		btnCreate = new JButton("Create");
-		btnCreate.setBackground(Color.decode("#2E64FE"));
-		//btnCreate.addActionListener(controller);
-		//btnCreate.setActionCommand(Action.ADD.name());
-		gbc.gridx = 1;
-		gbc.gridy = 9;
+		lbpartner = new JLabel("Socio: ");
+		lbpartner.setHorizontalAlignment(SwingConstants.RIGHT);
+		gbc.gridx = 0;
+		gbc.gridy = 8;
 		gbc.gridwidth = 1;
 		gbc.gridheight = 1;
 		gbc.weightx = 5.0;
 		gbc.weighty = 1.0;
 		gbc.fill = GridBagConstraints.BOTH;
-		add(btnCreate, gbc);
+		add(lbpartner, gbc);
+		
+		
+		gbc.gridx = 1;
+		gbc.gridy = 8;
+		gbc.gridwidth = 1;
+		gbc.gridheight = 1;
+		gbc.weightx = 5.0;
+		gbc.weighty = 1.0;
+		gbc.fill = GridBagConstraints.BOTH;
+		txtPartner = new JTextField();
+		add(txtPartner, gbc);
+		
+		gbc.insets.set(20, 120, 4, -60);
+		
+		gbc.gridx = 0;
+		gbc.gridy = 9;
+		gbc.gridwidth = 1;
+		gbc.gridheight = 1;
+		gbc.weightx = 2.0;
+		gbc.weighty = 1;
+		gbc.fill = GridBagConstraints.BOTH;
+		btnAdd = new JButton("Agregar socio", new ImageIcon(getClass().getResource("/img/check.png")));
+		add(btnAdd, gbc);
 		
 		setVisible(true);
 	}
