@@ -271,6 +271,7 @@ public class JdialogAddPartner extends JDialog {
 	}
 
 	public Partner getCreatedPerson() {
-		return new Partner(Integer.parseInt(txtId.getText()), txtName.getText(), birthDate.getDate());
+		return new Partner(Integer.parseInt(txtId.getText()), registerDate.getDate(), Integer.parseInt(txtIdLegal.getText()), txtName.getText(), txtSurname.getText(),
+				(Genre) cbxGenre.getSelectedItem(), birthDate.getDate(), Integer.parseInt(spinerStratum.getValue().toString()), Integer.parseInt(txtPartner.getText()));
 	}
 }

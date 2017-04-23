@@ -17,8 +17,9 @@ public class Company {
 		this.productList = new SimpleList<>();
 	}
 
-	public static Partner createPartner(int id, String name, Date birthday) {
-		return new Partner(id, name, birthday);
+	public static Partner createPartner(int id, Date registerDate, int idLegal, String name, String surname, Genre genre, Date birthday,
+			int stratum, int parent) {
+		return new Partner(id, registerDate, idLegal, name, surname, genre, birthday, stratum, parent);
 	}
 
 	public static Order createOrder(int id, Partner partner) {
