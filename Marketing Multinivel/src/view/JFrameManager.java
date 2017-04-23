@@ -10,7 +10,7 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-public class JFrameMainWindow extends JFrame {
+public class JFrameManager extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private DefaultTableModel partnersModel;
@@ -20,7 +20,10 @@ public class JFrameMainWindow extends JFrame {
 	private DefaultTableModel ordersModel;
 	private JTable tbOrders;
 
-	public JFrameMainWindow() {
+	/**
+	 * Constructor de ventana principal del Administrador
+	 */
+	public JFrameManager() {
 		setTitle(ConstantsUI.TITLE);
 		setSize(700, 700);
 		setLayout(new BorderLayout());
@@ -52,13 +55,13 @@ public class JFrameMainWindow extends JFrame {
 		tbParner.getTableHeader().setFont(ConstantsUI.FONT_LETTER_TABLE);
 		tbParner.getTableHeader().setForeground(Color.WHITE);
 		tbParner.setRowHeight(30);
-		tbParner.setSelectionBackground(Color.decode("#2b82ad"));
+		tbParner.setSelectionBackground(ConstantsUI.COLOR_SELECTION_BACKGROUND);
 		tbParner.setSelectionForeground(Color.WHITE);
 
 		JScrollPane pnPartner = new JScrollPane(tbParner);
 		pnPartner.setBackground(Color.WHITE);
 		pnCentralPartner.add(pnPartner, gridSystem.insertComponent(1, 1, 10, 0.15));
-		
+
 		productsModel = new DefaultTableModel();
 		productsModel.setColumnIdentifiers(columnsProducts);
 		tbProducts = new JTable(productsModel);
@@ -67,22 +70,38 @@ public class JFrameMainWindow extends JFrame {
 		tbProducts.getTableHeader().setFont(ConstantsUI.FONT_LETTER_TABLE);
 		tbProducts.getTableHeader().setForeground(Color.WHITE);
 		tbProducts.setRowHeight(30);
-		tbProducts.setSelectionBackground(Color.decode("#2b82ad"));
+		tbProducts.setSelectionBackground(ConstantsUI.COLOR_SELECTION_BACKGROUND);
 		tbProducts.setSelectionForeground(Color.WHITE);
 
 		JScrollPane pnProducts = new JScrollPane(tbProducts);
 		pnProducts.setBackground(Color.WHITE);
 		pnCentralPartner.add(pnProducts, gridSystem.insertComponent(1, 1, 10, 0.15));
-		
+
+		ordersModel = new DefaultTableModel();
+		ordersModel.setColumnIdentifiers(columnsOrders);
+		tbOrders = new JTable(ordersModel);
+
+		tbOrders.getTableHeader().setBackground(ConstantsUI.COLOR_TABLE_MANAGER);
+		tbOrders.getTableHeader().setFont(ConstantsUI.FONT_LETTER_TABLE);
+		tbOrders.getTableHeader().setForeground(Color.WHITE);
+		tbOrders.setRowHeight(30);
+		tbOrders.setSelectionBackground(ConstantsUI.COLOR_SELECTION_BACKGROUND);
+		tbOrders.setSelectionForeground(Color.WHITE);
+
+		JScrollPane pnOrders = new JScrollPane(tbOrders);
+		pnOrders.setBackground(Color.WHITE);
+		pnCentralPartner.add(pnOrders, gridSystem.insertComponent(1, 1, 10, 0.15));
+
 		JTabbedPane tabs = new JTabbedPane();
 		tabs.addTab(ConstantsUI.SENTENCE_PARTNER, ConstantsUI.IMG_TAB_PARTNER, pnPartner);
 		tabs.addTab(ConstantsUI.SENTENCE_PRODUCT, ConstantsUI.IMG_TAB_PRODUCT, pnProducts);
+		tabs.addTab(ConstantsUI.SENTENCE_ORDERS, ConstantsUI.IMG_TAB_ORDER, pnOrders);
 		pnCentralPartner.add(tabs, gridSystem.insertComponent(1, 1, 10, 1));
 		add(pnCentralPartner, BorderLayout.CENTER);
 		setVisible(true);
 	}
 
 	public static void main(String[] args) {
-		new JFrameMainWindow();
+		new JFrameManager();
 	}
 }
