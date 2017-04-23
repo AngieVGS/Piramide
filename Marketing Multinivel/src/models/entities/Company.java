@@ -64,36 +64,29 @@ public class Company {
 		productList.add(product);
 	}
 
-	public Partner deletePartner(Partner partnerToDelete) {
+	public void deletePartner(Partner partnerToDelete) {
 		// TO-DO REMOVE
 		// partnersTree.remove(partnerToDelete);
-		return null;
 	}
 
-	public Order deleteOrder(Order orderToDelete) {
-		// TO-DO REMOVE
-		// partnersTree.remove(orderToDelete);
-		return null;
+	public void deleteOrder(Order orderToDelete) {
+		orderList.remove(orderToDelete);
 	}
 
-	public Product deleteProduct(Product productToDelete) {
-		// TO-DO REMOVE
-		// partnersTree.remove(productToDelete);
-		return null;
+	public void deleteProduct(Product productToDelete) {
+		productList.remove(productToDelete);
 	}
 
 	public Partner searchPartner(int id) {
 		// TO-DO FIND
-		// return partnersTree.find(id);
 		return null;
 	}
 
 	public Order searchOrder(int id) throws ErrorNotFound{
-		// TO-DO SEARCH
 		NodeSimpleList<Order> auxOrder = orderList.getHead();
 		while (auxOrder != null) {
-			if (auxOrder.getInformation().getRegisterId() == id) {
-				return auxOrder.getInformation();
+			if (auxOrder.getInfo().getRegisterId() == id) {
+				return auxOrder.getInfo();
 			}
 			auxOrder = auxOrder.getNext();
 		}
@@ -103,8 +96,8 @@ public class Company {
 	public Product searchProduct(int id) throws ErrorNotFound{
 		NodeSimpleList<Product> auxProduct = productList.getHead();
 		while (auxProduct != null) {
-			if (auxProduct.getInformation().getId() == id) {
-				return auxProduct.getInformation();
+			if (auxProduct.getInfo().getId() == id) {
+				return auxProduct.getInfo();
 			}
 			auxProduct = auxProduct.getNext();
 		}
@@ -115,15 +108,20 @@ public class Company {
 		// TO-DO
 	}
 
-	public void editOrder(int idOldOrder, Order newOrder) {
-		// USAR METODO SEARCH
+	public void editOrder(int idOldOrder, Order newOrder) throws ErrorNotFound{
 		NodeSimpleList<Order> auxOrder = orderList.getHead();
+		while (auxOrder != null) {
+			if (auxOrder.getInfo().getRegisterId() == idOldOrder) {
+				auxOrder.setInformation(newOrder);
+			}
+			auxOrder = auxOrder.getNext();
+		}
 	}
 
 	public void editProduct(int idOldProduct, Product newProduct) {
 		NodeSimpleList<Product> auxProduct = productList.getHead();
 		while (auxProduct != null) {
-			if (auxProduct.getInformation().getId() == idOldProduct) {
+			if (auxProduct.getInfo().getId() == idOldProduct) {
 				auxProduct.setInformation(newProduct);
 			}
 			auxProduct = auxProduct.getNext();
