@@ -2,6 +2,7 @@ package structureData;
 
 import java.util.Comparator;
 
+
 public class SimpleList<T> {
 
 	private NodeSimpleList<T> head;
@@ -63,5 +64,78 @@ public class SimpleList<T> {
 	 */
 	public void insert(T info) {
 		this.head = new NodeSimpleList<T>(info, head);
+	}
+	
+	
+	public void editInformation(int pos, T information) {
+		NodeSimpleList<T> auxHead = this.head;
+		int counter = 0;
+		while (auxHead != null) {
+			if (pos == counter) {
+				auxHead.setInformation(information);
+			}
+			counter++;
+			auxHead = auxHead.getNext();
+		}
+	}
+	
+	public T getInformation(int pos) {
+		NodeSimpleList<T> aux = this.head;
+		T information = null;
+		int count = 0;
+		while (aux != null) {
+			if (count == pos) {
+				information = aux.getInformation();
+			} else {
+				count++;
+				aux = aux.getNext();
+			}
+		}
+		return information;
+
+	}
+
+	public int getPosicionOf(T info) {
+		NodeSimpleList<T> aux = this.head;
+		int count = 0;
+		while (aux != null) {
+			if (info.equals(aux.getInformation())) {
+				aux = null;
+			} else {
+				count++;
+				aux = aux.getNext();
+			}
+		}
+		return count;
+	}
+
+	public void deleteNode(int pos) {
+		NodeSimpleList<T> auxNode = this.head;
+		NodeSimpleList<T> lastNode = null;
+		int count = 0;
+		while (auxNode != null) {
+			if (pos == count) {
+				if (lastNode == null) {
+					this.head = this.head.getNext();
+				} else {
+					lastNode.setNext(auxNode.getNext());
+				}
+				auxNode = null;
+			} else {
+				lastNode = auxNode;
+				auxNode = auxNode.getNext();
+				count++;
+			}
+		}
+	}
+
+	public int getTotalNodes() {
+		NodeSimpleList<T> head = this.head;
+		int count = 0;
+		while (head != null) {
+			count++;
+			head = head.getNext();
+		}
+		return count;
 	}
 }

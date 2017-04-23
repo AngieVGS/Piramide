@@ -27,7 +27,7 @@ public class TreeK_ary<T> {
 	private void addSonFather(NodeTreeK_ary<T> father, NodeTreeK_ary<T> nodeAdd) {
 		NodeTreeK_ary<T> aux = father.firtsSon;
 		if (aux == null) {
-			System.out.println("sirvio");
+			System.out.println("primero hijo vacio");
 			father.firtsSon = nodeAdd;
 		} else {
 			while (aux.nextBrother != null) {
