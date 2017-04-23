@@ -22,12 +22,12 @@ public class Company {
 		return new Partner(id, registerDate, idLegal, name, surname, genre, birthday, stratum, parent);
 	}
 
-	public static Order createOrder(int id, Partner partner) {
-		return new Order(id, partner);
+	public static Order createOrder(int registerId, Date date, int idPartner, int codeProduct, int quantity, int status) {
+		return new Order(registerId, date, idPartner, codeProduct, quantity, status);
 	}
 	
-	public static Product createProduct(int id, String name, String description, double price){
-		return new Product(id, name, description, price);
+	public static Product createProduct(int ref, String line, String reference, Genre target, double price){
+		return new Product(ref, line, reference, target, price);
 	}
 
 	/**

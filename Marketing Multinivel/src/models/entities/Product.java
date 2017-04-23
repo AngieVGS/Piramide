@@ -2,42 +2,65 @@ package models.entities;
 
 public class Product {
 	
-	private int id ;
-	private String name;
-	private String description;
+	private int ref ;
+	private String line;
+	private String reference;
+	private Genre target;
 	private double price;
-	
-	public Product(int id, String name, String description, double price) {
-		this.id = id;
-		this.name = name;
-		this.description = description;
+
+	public Product(int ref, String line, String reference, Genre target, double price) {
+		this.ref = ref;
+		this.line = line;
+		this.reference = reference;
+		this.target = target;
 		this.price = price;
 	}
-	
+
 	public int getId() {
-		return id;
+		return ref;
 	}
+	
 	public void setId(int id) {
-		this.id = id;
+		this.ref = id;
 	}
-	public String getName() {
-		return name;
+	
+	public int getRef() {
+		return ref;
 	}
-	public void setName(String name) {
-		this.name = name;
+
+	public void setRef(int ref) {
+		this.ref = ref;
 	}
-	public String getDescription() {
-		return description;
+
+	public String getLine() {
+		return line;
 	}
-	public void setDescription(String description) {
-		this.description = description;
+
+	public void setLine(String line) {
+		this.line = line;
 	}
+
+	public String getReference() {
+		return reference;
+	}
+
+	public void setReference(String reference) {
+		this.reference = reference;
+	}
+
+	public Genre getTarget() {
+		return target;
+	}
+
+	public void setTarget(Genre target) {
+		this.target = target;
+	}
+
 	public double getPrice() {
 		return price;
 	}
 	public void setPrice(double price) {
 		this.price = price;
 	}
-	
 	
 }

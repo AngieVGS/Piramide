@@ -1,16 +1,60 @@
 package models.entities;
 
-import structureData.SimpleList;
+import java.util.Date;
 
 public class Order {
 	
-	private int id;
-	private SimpleList<Product> productList;
-	private Partner partner;
-
-	public Order(int id, Partner partner) {
-		this.id = id;
-		this.productList = new SimpleList<>();
-		this.partner = partner;
+	private int registerId;
+	private Date date; 
+	private int idPartner;
+	private int codeProduct;
+	private int quantity;
+	private int status;
+	
+	public Order(int registerId, Date date, int idPartner, int codeProduct, int quantity, int status) {
+		this.registerId = registerId;
+		this.date = date;
+		this.idPartner = idPartner;
+		this.codeProduct = codeProduct;
+		this.quantity = quantity;
+		this.status = status;
 	}
+	
+	public int getRegisterId() {
+		return registerId;
+	}
+	public void setRegisterId(int registerId) {
+		this.registerId = registerId;
+	}
+	public Date getDate() {
+		return date;
+	}
+	public void setDate(Date date) {
+		this.date = date;
+	}
+	public int getIdPartner() {
+		return idPartner;
+	}
+	public void setIdPartner(int idPartner) {
+		this.idPartner = idPartner;
+	}
+	public int getCodeProduct() {
+		return codeProduct;
+	}
+	public void setCodeProduct(int codeProduct) {
+		this.codeProduct = codeProduct;
+	}
+	public int getQuantity() {
+		return quantity;
+	}
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+	public int getStatus() {
+		return status;
+	}
+	public void setStatus(int status) {
+		this.status = status;
+	}
+
 }
