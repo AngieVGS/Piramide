@@ -16,7 +16,7 @@ import javax.swing.SwingConstants;
 
 import com.toedter.calendar.JDateChooser;
 
-import controller.Genre;
+import models.entities.Genre;
 import models.entities.Partner;
 import models.errores.ValidateFields;
 
