@@ -27,6 +27,7 @@ public class TreeK_ary<T> {
 	private void addSonFather(NodeTreeK_ary<T> father, NodeTreeK_ary<T> nodeAdd) {
 		NodeTreeK_ary<T> aux = father.firtsSon;
 		if (aux == null) {
+			System.out.println("sirvio");
 			father.firtsSon = nodeAdd;
 		} else {
 			while (aux.nextBrother != null) {
@@ -36,9 +37,18 @@ public class TreeK_ary<T> {
 		}
 	}
 
+	/**
+	 * Método que busca un nodo basado en una información
+	 * Para hacer la comparación usa un comparador por ID
+	 * @param info dato que se desea buscar
+	 * @return nodo o null si no se encuentra
+	 */
 	public NodeTreeK_ary<T> find(T info) {
+		//HACE FALTA PONER UN COMPARADOR
+		//REVISAR QUE FUNCIONE BIEN
 		NodeTreeK_ary<T> node = root;
 		if (node == null) {
+			System.out.println("null raiz");
 			return null;
 		} else {
 			if (node.info.equals(info)) {

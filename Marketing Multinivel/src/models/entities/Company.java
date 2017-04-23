@@ -44,7 +44,7 @@ public class Company {
 	 * @param partner es el referido
 	 * @param partnerFather es el socio padre, es decir, quien refirio a partner
 	 */
-	public void addPartner(Partner partner, Partner partnerFather) {
+	public void registerPartner(Partner partner, Partner partnerFather) {
 		partnersTree.add(partner, partnerFather);
 	}
 	
@@ -71,6 +71,24 @@ public class Company {
 	public Product deleteProduct(Product productToDelete) {
 		//TO-DO REMOVE 
 //		partnersTree.remove(productToDelete);
+		return null;
+	}
+	
+	public Partner searchPartner(int id){
+//		TO-DO FIND 
+//		return partnersTree.find(id);
+		return null;
+	}
+	
+	public Order searchOrder(int id){
+//		TO-DO SEARCH 
+//		return orderList.search(id);
+		return null;
+	}
+	
+	public Product searchProduct(int id){
+//		TO-DO SEARCH 
+//		return productList.search(id);
 		return null;
 	}
 }
