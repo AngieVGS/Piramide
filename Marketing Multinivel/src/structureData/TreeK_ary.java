@@ -8,7 +8,7 @@ public class TreeK_ary<T> {
 		this.root = null;
 	}
 
-	public boolean Add(T info, T father) {
+	public boolean add(T info, T father) {
 		NodeTreeK_ary<T> nodeAdd = new NodeTreeK_ary<T>(info);
 		if (root == null) {
 			root = new NodeTreeK_ary<T>(info);
