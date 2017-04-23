@@ -3,7 +3,7 @@ import java.io.IOException;
 import java.io.RandomAccessFile;
 
 public class RandomTwo {
-	public static final String FILEPATH = ".\\src\\file.prs";
+	private String filePath;
 
 //	public static void main(String[] args) {
 //		try {
@@ -14,6 +14,10 @@ public class RandomTwo {
 //			e.printStackTrace();
 //		}
 //	}
+	
+	public RandomTwo(String filePath) {
+		this.filePath = filePath;
+	}
 
 	public  byte[] readFromFile(String filePath, int position, int size)throws IOException {
 		RandomAccessFile file = new RandomAccessFile(filePath, "r");
