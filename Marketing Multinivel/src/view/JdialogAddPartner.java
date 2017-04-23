@@ -16,6 +16,8 @@ import javax.swing.SwingConstants;
 
 import com.toedter.calendar.JDateChooser;
 
+import controller.Actions;
+import controller.Controller;
 import models.entities.Genre;
 import models.entities.Partner;
 import models.errores.ValidateFields;
@@ -247,14 +249,13 @@ public class JdialogAddPartner extends JDialog {
 		gbc.weightx = 2.0;
 		gbc.weighty = 1;
 		gbc.fill = GridBagConstraints.BOTH;
+		
 		btnAdd = new JButton("Agregar socio", new ImageIcon(getClass().getResource("/img/check.png")));
 		btnAdd.setForeground(Color.WHITE);
 		btnAdd.setBackground(Color.decode("#062f3c"));
+		btnAdd.addActionListener(Controller.getInstance());
+		btnAdd.setActionCommand(Actions.ADD_PARTNER.name());
 		add(btnAdd, gbc);
-	}
-
-	public static void main(String[] args) {
-		new JdialogAddPartner();
 	}
 
 	public void cleanFields() {

@@ -39,4 +39,5 @@ public class ConstantsUI {
 	public static final Icon IMG_TAB_ORDER = new ImageIcon("src/img/order.png");
 	public static final String SENTENCE_FILE = "File";
 	public static final String SENTENCE_ADD_PARTNER = "Add Partner";
+	public static final String SENTENCE_ADD_PRODUCT = "Add Product";
 }

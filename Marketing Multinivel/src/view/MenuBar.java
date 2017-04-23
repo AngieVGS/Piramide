@@ -22,6 +22,12 @@ public class MenuBar extends JMenuBar {
 		itemAddPartner.addActionListener(Controller.getInstance());
 		itemAddPartner.setActionCommand(Actions.SHOW_DIALOG_ADD_PARTNER.name());
 		menuFile.add(itemAddPartner);
+		
+		JMenuItem itemAddProduct = new JMenuItem(ConstantsUI.SENTENCE_ADD_PRODUCT);
+		itemAddProduct.setBackground(Color.WHITE);
+		itemAddProduct.addActionListener(Controller.getInstance());
+		itemAddProduct.setActionCommand(Actions.SHOW_DIALOG_ADD_PRODUCT.name());
+		menuFile.add(itemAddProduct);
 
 		add(menuFile);
 	}

@@ -3,6 +3,7 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import view.JDialogAddProduct;
 import view.JFrameManager;
 import view.JdialogAddPartner;
 
@@ -11,10 +12,8 @@ public class Controller implements ActionListener {
 	private static Controller controller;
 	private JFrameManager jFrameManager;
 	private JdialogAddPartner jdialogAddPartner;
+	private JDialogAddProduct jDialogAddProduct;
 
-	public Controller() {
-		
-	}
 	public static Controller getInstance() {
 		if (controller == null) {
 			controller = new Controller();
@@ -28,21 +27,49 @@ public class Controller implements ActionListener {
 		case ADD_ORDER:
 			break;
 		case ADD_PRODUCT:
+			addProduct();
 			break;
 		case ADD_PARTNER:
+			addPartner();
 			break;
 		case SHOW_DIALOG_ADD_PARTNER:
-			jdialogAddPartner = new JdialogAddPartner();
-			jdialogAddPartner.setVisible(true);
+			showDialogAddPartner();
+			break;
+		case SHOW_DIALOG_ADD_PRODUCT:
+			showDialogAddProduct();
 			break;
 		}
 	}
 
-	public void setjFrameManager(JFrameManager jFrameManager) {
-		this.jFrameManager = jFrameManager;
+	private void showDialogAddProduct() {
+		jDialogAddProduct = new JDialogAddProduct();
+		jDialogAddProduct.setVisible(true);
+		jFrameManager.addProductToTable(null);
 	}
 
-	public void setJdialogAddPartner(JdialogAddPartner jdialogAddPartner) {
-		this.jdialogAddPartner = jdialogAddPartner;
+	/**
+	 * Crea y muestra el dialogo Agregar Socio
+	 */
+	private void showDialogAddPartner() {
+		jdialogAddPartner = new JdialogAddPartner();
+		jdialogAddPartner.setVisible(true);
+	}
+
+	private void addProduct() {
+		jDialogAddProduct.setVisible(false);
+		jDialogAddProduct.cleanFields();
+	}
+
+	/**
+	 * Agrega socio a la logica y a la tabla para visualizacion.
+	 */
+	private void addPartner() {
+		jdialogAddPartner.setVisible(false);
+		jdialogAddPartner.cleanFields();
+		jFrameManager.addPartnerToTable(null);
+	}
+
+	public void setjFrameManager(JFrameManager jFrameManager) {
+		this.jFrameManager = jFrameManager;
 	}
 }

@@ -10,6 +10,10 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import models.entities.Order;
+import models.entities.Partner;
+import models.entities.Product;
+
 public class JFrameManager extends JFrame {
 
 	private static final long serialVersionUID = 1L;
@@ -19,6 +23,7 @@ public class JFrameManager extends JFrame {
 	private JTable tbProducts;
 	private DefaultTableModel ordersModel;
 	private JTable tbOrders;
+	private JTabbedPane tabs;
 
 	/**
 	 * Constructor de ventana principal del Administrador
@@ -92,7 +97,7 @@ public class JFrameManager extends JFrame {
 		pnOrders.setBackground(Color.WHITE);
 		pnCentralPartner.add(pnOrders, gridSystem.insertComponent(1, 1, 10, 0.15));
 
-		JTabbedPane tabs = new JTabbedPane();
+		tabs = new JTabbedPane();
 		tabs.addTab(ConstantsUI.SENTENCE_PARTNER, ConstantsUI.IMG_TAB_PARTNER, pnPartner);
 		tabs.addTab(ConstantsUI.SENTENCE_PRODUCT, ConstantsUI.IMG_TAB_PRODUCT, pnProducts);
 		tabs.addTab(ConstantsUI.SENTENCE_ORDERS, ConstantsUI.IMG_TAB_ORDER, pnOrders);
@@ -100,8 +105,19 @@ public class JFrameManager extends JFrame {
 		add(pnCentralPartner, BorderLayout.CENTER);
 		setVisible(true);
 	}
+	
+	public void addPartnerToTable(Partner partner) {
+//		partnersModel.addRow(partner.getPartner());
+		tabs.setSelectedIndex(0);
+	}
 
-	public static void main(String[] args) {
-		new JFrameManager();
+	public void addProductToTable(Product product) {
+//		productsModel.addRow(product.getProduct());
+		tabs.setSelectedIndex(1);
+	}
+
+	public void addOrderToTable(Order order) {
+//		ordersModel.addRow(order.getTable());
+		tabs.setSelectedIndex(2);
 	}
 }

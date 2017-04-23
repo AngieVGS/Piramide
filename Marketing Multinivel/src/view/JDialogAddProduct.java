@@ -12,6 +12,8 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import controller.Actions;
+import controller.Controller;
 import models.entities.Genre;
 import models.errores.ValidateFields;
 
@@ -156,13 +158,10 @@ public class JDialogAddProduct extends JDialog{
 		btnAdd = new JButton("Agregar producto", new ImageIcon(getClass().getResource("/img/check.png")));
 		btnAdd.setForeground(Color.WHITE);
 		btnAdd.setBackground(Color.decode("#062f3c"));
-		add(btnAdd, gbc);
 		
-		setVisible(true);
-	}
-	
-	public static void main(String[] args) {
-		new JDialogAddProduct();
+		btnAdd.addActionListener(Controller.getInstance());
+		btnAdd.setActionCommand(Actions.ADD_PRODUCT.name());
+		add(btnAdd, gbc);
 	}
 	
 	public void cleanFields() {
@@ -173,5 +172,4 @@ public class JDialogAddProduct extends JDialog{
 		txtPrice.setText("");
 		cbxGenre.setSelectedItem(Genre.UNSPECIFIED);
 	}
-	
 }
