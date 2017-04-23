@@ -2,7 +2,6 @@ package structureData;
 
 import java.util.Comparator;
 
-
 public class SimpleList<T> {
 
 	private NodeSimpleList<T> head;
@@ -46,9 +45,9 @@ public class SimpleList<T> {
 		while (aux2 != null) {
 			aux1 = aux2.getNext();
 			while (aux1 != null) {
-				if (comparable.compare(aux1.getInformation(), aux2.getInformation()) < 0) {
-					T aux = aux2.getInformation();
-					aux2.setInformation(aux1.getInformation());
+				if (comparable.compare(aux1.getInfo(), aux2.getInfo()) < 0) {
+					T aux = aux2.getInfo();
+					aux2.setInformation(aux1.getInfo());
 					aux1.setInformation(aux);
 				}
 				aux1 = aux1.getNext();
@@ -65,8 +64,7 @@ public class SimpleList<T> {
 	public void insert(T info) {
 		this.head = new NodeSimpleList<T>(info, head);
 	}
-	
-	
+
 	public void editInformation(int pos, T information) {
 		NodeSimpleList<T> auxHead = this.head;
 		int counter = 0;
@@ -78,14 +76,14 @@ public class SimpleList<T> {
 			auxHead = auxHead.getNext();
 		}
 	}
-	
+
 	public T get(int pos) {
 		NodeSimpleList<T> aux = this.head;
 		T information = null;
 		int count = 0;
 		while (aux != null) {
 			if (count == pos) {
-				information = aux.getInformation();
+				information = aux.getInfo();
 			} else {
 				count++;
 				aux = aux.getNext();
@@ -99,7 +97,7 @@ public class SimpleList<T> {
 		NodeSimpleList<T> aux = this.head;
 		int count = 0;
 		while (aux != null) {
-			if (info.equals(aux.getInformation())) {
+			if (info.equals(aux.getInfo())) {
 				aux = null;
 			} else {
 				count++;
@@ -107,6 +105,21 @@ public class SimpleList<T> {
 			}
 		}
 		return count;
+	}
+
+	//FALTA PROBAR
+	public void remove(T info) {
+		NodeSimpleList<T> auxNode = this.head;
+		NodeSimpleList<T> lastNode = null;
+		while (auxNode != null) {
+			if (auxNode.getInfo().equals(info)) {
+				lastNode.setNext(auxNode.getNext());
+				return;
+			} else {
+				lastNode = auxNode;
+			}
+			auxNode = auxNode.getNext();
+		}
 	}
 
 	public void remove(int pos) {

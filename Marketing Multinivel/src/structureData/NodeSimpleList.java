@@ -19,7 +19,7 @@ public class NodeSimpleList<T> {
 		this.next = next;
 	}
 
-	public T getInformation() {
+	public T getInfo() {
 		return information;
 	}
 
