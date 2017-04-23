@@ -79,7 +79,7 @@ public class SimpleList<T> {
 		}
 	}
 	
-	public T getInformation(int pos) {
+	public T get(int pos) {
 		NodeSimpleList<T> aux = this.head;
 		T information = null;
 		int count = 0;
@@ -95,7 +95,7 @@ public class SimpleList<T> {
 
 	}
 
-	public int getPosicionOf(T info) {
+	public int indexOf(T info) {
 		NodeSimpleList<T> aux = this.head;
 		int count = 0;
 		while (aux != null) {
@@ -109,7 +109,7 @@ public class SimpleList<T> {
 		return count;
 	}
 
-	public void deleteNode(int pos) {
+	public void remove(int pos) {
 		NodeSimpleList<T> auxNode = this.head;
 		NodeSimpleList<T> lastNode = null;
 		int count = 0;
@@ -129,7 +129,7 @@ public class SimpleList<T> {
 		}
 	}
 
-	public int getTotalNodes() {
+	public int size() {
 		NodeSimpleList<T> head = this.head;
 		int count = 0;
 		while (head != null) {
