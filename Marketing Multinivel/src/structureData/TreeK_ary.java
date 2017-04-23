@@ -69,4 +69,17 @@ public class TreeK_ary<T> {
 		}
 		return null;
 	}
+
+	  public void printTree(NodeTreeK_ary<T> node){
+	        if (node != null) {
+	            System.out.println(node.info);
+	            printTree(node.getFirtsSon());
+	            printTree(node.getNextBrother());
+	        }
+	    }
+	
+	public NodeTreeK_ary<T> getRoot() {
+		return root;
+	}
+	
 }
