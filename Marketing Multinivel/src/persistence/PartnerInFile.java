@@ -45,12 +45,22 @@ public class PartnerInFile extends Partner{
 	
 	public void write(RandomAccessFile file) throws IOException{
 		DateFormat dateFormat ;
+		file.writeInt(getId());
 		
-		writeString(file, getName(), 32);
+		dateFormat  = DateFormat.getDateInstance(DateFormat.LONG);
+		writeString(file, dateFormat.format(getRegisterDate()), 32);
+		
+		file.writeInt(getIdLegal());
+		writeString(file, getName(), 16);
 		writeString(file, getSurname(), 16);
+		writeString(file, getGenre().name(), 8);
 	
 		dateFormat  = DateFormat.getDateInstance(DateFormat.LONG);
 		writeString(file, dateFormat.format(getBirthday()), 32);
+		
+		file.writeInt(getStratum());
+		file.writeInt(getParent());
+		
 	}
 	
 	private void writeString(RandomAccessFile file, String chain, int size) throws IOException{
