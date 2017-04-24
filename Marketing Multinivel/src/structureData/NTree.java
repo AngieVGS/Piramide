@@ -5,6 +5,8 @@
  */
 package structureData;
 
+import java.util.Comparator;
+
 /**
  *
  * @author Yuliana Boyaca
@@ -12,13 +14,16 @@ package structureData;
 public class NTree<T> {
 
     private NodeNario<T> root;
+    private Comparator<T> comparator;
 
-    public NTree() {
+    public NTree(Comparator<T> comparator) {
+    	this.comparator = comparator; 
         this.root = null;
     }
 
-    public NTree(NodeNario<T> root) {
+    public NTree(NodeNario<T> root, Comparator<T> comparator) {
         this.root = root;
+        this.comparator = comparator;
     }
 
     public boolean isEmpty() {
@@ -80,7 +85,7 @@ public class NTree<T> {
     public NodeNario<T> find(NodeNario<T> nodeAux, T infoParent) {
         NodeNario<T> auxExit = null;
         if (nodeAux != null) {
-            if (nodeAux.info.equals(infoParent)) {
+            if (comparator.compare(nodeAux.info, infoParent) == 0) {
                 return nodeAux;
             } else {
                 if (nodeAux.first != null) {

@@ -3,13 +3,14 @@ package models.dao;
 import java.util.Date;
 
 import exceptions.ErrorNotFound;
+import exceptions.RegisteredPartner;
+import models.comparator.ComparatorPartner;
 import models.entities.Genre;
 import models.entities.Order;
 import models.entities.Partner;
 import models.entities.Product;
 import structureData.NTree;
 import structureData.NodeSimpleList;
-import structureData.NodeNario;
 import structureData.SimpleList;
 
 public class Company {
@@ -20,7 +21,7 @@ public class Company {
 
 	public Company() {
 		this.orderList = new SimpleList<>();
-		this.partnersTree = new NTree<>();
+		this.partnersTree = new NTree<>(new ComparatorPartner());
 		this.productList = new SimpleList<>();
 	}
 
@@ -54,9 +55,14 @@ public class Company {
 	 *            es el referido
 	 * @param partnerFather
 	 *            es el socio padre, es decir, quien refirio a partner
+	 * @throws RegisteredPartner 
 	 */
-	public void registerPartner(Partner partner, Partner partnerFather) {
-		partnersTree.add(partner, partnerFather);
+	public void registerPartner(Partner partner, Partner partnerFather) throws RegisteredPartner {
+		if (partnersTree.findParent(partner) == null ) {
+			partnersTree.add(partner, partnerFather);	
+		}else{
+			throw new RegisteredPartner();
+		}
 	}
 
 	/**
