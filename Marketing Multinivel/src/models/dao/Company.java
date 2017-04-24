@@ -1,8 +1,12 @@
-package models.entities;
+package models.dao;
 
 import java.util.Date;
 
 import exceptions.ErrorNotFound;
+import models.entities.Genre;
+import models.entities.Order;
+import models.entities.Partner;
+import models.entities.Product;
 import structureData.NodeSimpleList;
 import structureData.SimpleList;
 import structureData.TreeK_ary;
