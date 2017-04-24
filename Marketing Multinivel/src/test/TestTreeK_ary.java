@@ -11,7 +11,7 @@ public class TestTreeK_ary {
        System.out.println("Caso 3: " + (nTree.add("lulu", "hola") ? "ok" : "error"));
        System.out.println("Caso 4: " + (nTree.add("viviana", "lulu") ? "ok" : "error"));
        System.out.println("Caso 5: " + (nTree.add("yuliana", "lulu") ? "ok" : "error"));
-       System.out.println(nTree.find("yuliana"));
+       System.out.println(nTree.findParent("viviana"));
        nTree.printTree(nTree.getRoot());
 
 	}
