@@ -3,6 +3,7 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import models.entities.Partner;
 import models.entities.Product;
 import view.JDialogAddProduct;
 import view.JFrameManager;
@@ -73,8 +74,9 @@ public class Controller implements ActionListener {
 	 */
 	private void addPartner() {
 		jdialogAddPartner.setVisible(false);
+		Partner partner = jdialogAddPartner.getCreatedPerson();
+		jFrameManager.addPartnerToTable(partner);
 		jdialogAddPartner.cleanFields();
-		jFrameManager.addPartnerToTable(null);
 	}
 
 	public void setjFrameManager(JFrameManager jFrameManager) {

@@ -2,7 +2,7 @@ package models.entities;
 
 import java.util.Date;
 
-public class Partner{
+public class Partner {
 
 	private int id;
 	private Date registerDate;
@@ -26,20 +26,20 @@ public class Partner{
 		this.stratum = stratum;
 		this.parent = parent;
 	}
-	
+
 	public Partner() {
 
 	}
-	
+
 	public void editParnet(Partner partner) {
 		this.registerDate = partner.registerDate;
 		this.idLegal = partner.idLegal;
-		this.name =partner.name;
+		this.name = partner.name;
 		this.surname = partner.surname;
 		this.genre = partner.genre;
 		this.birthday = partner.birthday;
 		this.stratum = partner.stratum;
-		this.parent = partner.parent;	
+		this.parent = partner.parent;
 
 	}
 
@@ -113,6 +113,10 @@ public class Partner{
 
 	public void setParent(int parent) {
 		this.parent = parent;
+	}
+
+	public Object[] getPartner() {
+		return new Object[] { id, registerDate, idLegal, name, surname, genre, birthday, stratum, parent };
 	}
 
 	@Override

@@ -71,7 +71,7 @@ public class JdialogAddPartner extends JDialog {
 		gbc.weighty = 1.0;
 		gbc.fill = GridBagConstraints.BOTH;
 		txtId = new JTextField();
-		ValidateFields.onlyLetter(txtId);
+		ValidateFields.onlyNumber(txtId);
 		add(txtId, gbc);
 
 		gbc.gridx = 0;
@@ -114,7 +114,7 @@ public class JdialogAddPartner extends JDialog {
 		gbc.weighty = 1.0;
 		gbc.fill = GridBagConstraints.BOTH;
 		txtIdLegal = new JTextField();
-		ValidateFields.onlyLetter(txtIdLegal);
+		ValidateFields.onlyNumber(txtIdLegal);
 		add(txtIdLegal, gbc);
 
 		gbc.gridx = 0;

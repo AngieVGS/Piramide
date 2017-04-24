@@ -117,7 +117,7 @@ public class JFrameManager extends JFrame {
 	 * @param partner
 	 */
 	public void addPartnerToTable(Partner partner) {
-		// partnersModel.addRow(partner.getPartner());
+		partnersModel.addRow(partner.getPartner());
 		tabs.setSelectedIndex(0);
 	}
 
