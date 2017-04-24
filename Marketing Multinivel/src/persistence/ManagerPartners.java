@@ -19,7 +19,7 @@ public class ManagerPartners {
 	}
 
 	public void openToRead() throws FileNotFoundException{
-		RandomAccessFile file = new RandomAccessFile(fileName, "r");
+		file = new RandomAccessFile(fileName, "r");
 	}
 
 	public void close() throws IOException{

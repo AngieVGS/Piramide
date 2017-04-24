@@ -25,11 +25,21 @@ public class PartnerInFile extends Partner{
 
 	public void read(RandomAccessFile file) throws IOException, ParseException{
 		DateFormat dateFormat;
-		setName(readString(file, 32));
+		
+		setId(file.readInt());
+		
+		dateFormat = DateFormat.getDateInstance(DateFormat.LONG);
+		setRegisterDate((dateFormat.parse(readString(file, 32))));
+		
+		setIdLegal(file.readInt());
+		setName(readString(file, 16));
+		setSurname(readString(file, 16));
+//		setGenre((Genre.valueOf(readString(file, 8))));
 		
 		dateFormat = DateFormat.getDateInstance(DateFormat.LONG);
 		setBirthday(dateFormat.parse(readString(file, 32)));
 		
+		setStratum(file.readInt());
 		setParent(file.readInt());
 	}
 	
@@ -53,7 +63,7 @@ public class PartnerInFile extends Partner{
 		file.writeInt(getIdLegal());
 		writeString(file, getName(), 16);
 		writeString(file, getSurname(), 16);
-		writeString(file, getGenre().getNameGenre(), 8);
+//		writeString(file, getGenre().getNameGenre(), 8);
 	
 		dateFormat  = DateFormat.getDateInstance(DateFormat.LONG);
 		writeString(file, dateFormat.format(getBirthday()), 32);

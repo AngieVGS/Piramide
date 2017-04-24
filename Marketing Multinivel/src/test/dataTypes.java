@@ -15,7 +15,7 @@ public class dataTypes {
 //		Partner  partener = new Partner(8, new Date(2001, 3, 8), 8, "Juan", "Alvarez", Genre.MALE, new Date(1996, 7, 8), 2, 7);
 //		
 //		PartnerInFile partnerInFile = new PartnerInFile(8, new Date(2001, 3, 8), 8, "Juan", "Alvarez", Genre.MALE, new Date(1996, 7, 8), 2, 7);
-//		ManagerPartners managerPartners = new ManagerPartners(".\\src\\part.dat");
+//		ManagerPartners managerPartners = new ManagerPartners(".\\src\\data\\part.dat");
 //		try {
 //			managerPartners.open();
 //		} catch (FileNotFoundException e1) {
@@ -30,7 +30,7 @@ public class dataTypes {
 //			e.printStackTrace();
 //		}
 		
-		ManagerPartners managerPartners = new  ManagerPartners(".\\src\\part.dat");
+		ManagerPartners managerPartners = new  ManagerPartners(".\\src\\data\\part.dat");
 		try {
 			managerPartners.openToRead();
 		} catch (FileNotFoundException e) {
