@@ -40,9 +40,8 @@ public class JFrameManager extends JFrame {
 		setJMenuBar(menuBar);
 
 		Object[] columnsPartners = new Object[] { ConstantsUI.SENTENCE_ID_PARTNER, ConstantsUI.SENTENCE_REGISTER,
-				ConstantsUI.SENTENCE_FIRST_NAME, ConstantsUI.SENTENCE_LAST_NAME, ConstantsUI.SENTENCE_GENRE,
-				ConstantsUI.SENTENCE_NACIMIENTO, ConstantsUI.SENTENCE_STATUS, ConstantsUI.SENTENCE_PARENT,
-				ConstantsUI.SENTENCE_PARENT };
+				ConstantsUI.SENTENCE_ID_LEGAL, ConstantsUI.SENTENCE_FIRST_NAME, ConstantsUI.SENTENCE_LAST_NAME, ConstantsUI.SENTENCE_GENRE,
+				ConstantsUI.SENTENCE_NACIMIENTO, ConstantsUI.SENTENCE_STATUS, ConstantsUI.SENTENCE_PARENT };
 		Object[] columnsProducts = new Object[] { ConstantsUI.SENTENCE_ID_PRODUCT, ConstantsUI.SENTENCE_LINEA,
 				ConstantsUI.SENTENCE_REFERENCE, ConstantsUI.SENTENCE_TARGET, ConstantsUI.SENTENCE_VALUE };
 		Object[] columnsOrders = new Object[] { ConstantsUI.SENTENCE_ID_ORDER, ConstantsUI.SENTENCE_DATE,
@@ -112,7 +111,7 @@ public class JFrameManager extends JFrame {
 	}
 
 	public void addProductToTable(Product product) {
-//		productsModel.addRow(product.getProduct());
+		productsModel.addRow(product.getProduct());
 		tabs.setSelectedIndex(1);
 	}
 

@@ -40,4 +40,5 @@ public class ConstantsUI {
 	public static final String SENTENCE_FILE = "File";
 	public static final String SENTENCE_ADD_PARTNER = "Add Partner";
 	public static final String SENTENCE_ADD_PRODUCT = "Add Product";
+	public static final String SENTENCE_ID_LEGAL = "Id Legal";
 }

@@ -15,11 +15,13 @@ import javax.swing.SwingConstants;
 import controller.Actions;
 import controller.Controller;
 import exceptions.ValidateFields;
+import models.dao.Company;
 import models.entities.Genre;
+import models.entities.Product;
 
-public class JDialogAddProduct extends JDialog{
+public class JDialogAddProduct extends JDialog {
 	private static final long serialVersionUID = 1L;
-	private JTextField txtRef, txtLine, txtReference, txtTarget, txtPrice;
+	private JTextField txtRef, txtLine, txtReference, txtPrice;
 	private JComboBox<Genre> cbxGenre;
 	private JButton btnAdd;
 
@@ -28,7 +30,7 @@ public class JDialogAddProduct extends JDialog{
 		setModal(true);
 		setResizable(false);
 		setLocationRelativeTo(null);
-		setIconImage( new ImageIcon(getClass().getResource("/img/product.png")).getImage());
+		setIconImage(new ImageIcon(getClass().getResource("/img/product.png")).getImage());
 		setTitle("Nuevo producto");
 		setDefaultCloseOperation(HIDE_ON_CLOSE);
 		setLayout(new GridBagLayout());
@@ -56,8 +58,8 @@ public class JDialogAddProduct extends JDialog{
 		gbc.weightx = 5.0;
 		gbc.weighty = 1.0;
 		gbc.fill = GridBagConstraints.BOTH;
-		txtRef = new JTextField();
-		ValidateFields.onlyLetter(txtRef);
+		txtRef = new JTextField("0");
+		ValidateFields.onlyNumber(txtRef);
 		add(txtRef, gbc);
 
 		gbc.gridx = 0;
@@ -88,7 +90,7 @@ public class JDialogAddProduct extends JDialog{
 		gbc.weightx = 1.0;
 		gbc.weighty = 0.0;
 		gbc.fill = GridBagConstraints.BOTH;
-		JLabel lbReference = new JLabel("Referencia: ");
+		JLabel lbReference = new JLabel("Description: ");
 		lbReference.setHorizontalAlignment(SwingConstants.RIGHT);
 		add(lbReference, gbc);
 
@@ -110,7 +112,7 @@ public class JDialogAddProduct extends JDialog{
 		gbc.weightx = 1.0;
 		gbc.weighty = 0.0;
 		gbc.fill = GridBagConstraints.BOTH;
-		JLabel lbTarget = new JLabel("Nombre: ");
+		JLabel lbTarget = new JLabel("Target: ");
 		lbTarget.setHorizontalAlignment(SwingConstants.RIGHT);
 		add(lbTarget, gbc);
 
@@ -121,8 +123,9 @@ public class JDialogAddProduct extends JDialog{
 		gbc.weightx = 5.0;
 		gbc.weighty = 1.0;
 		gbc.fill = GridBagConstraints.BOTH;
-		txtTarget = new JTextField();
-		add(txtTarget, gbc);
+		cbxGenre = new JComboBox<>(Genre.values());
+		cbxGenre.setSelectedItem(Genre.UNSPECIFIED);
+		add(cbxGenre, gbc);
 
 		gbc.gridx = 0;
 		gbc.gridy = 4;
@@ -142,12 +145,12 @@ public class JDialogAddProduct extends JDialog{
 		gbc.weightx = 5.0;
 		gbc.weighty = 1.0;
 		gbc.fill = GridBagConstraints.BOTH;
-		txtPrice = new JTextField();
-		ValidateFields.onlyLetter(txtPrice);
+		txtPrice = new JTextField("0");
+		ValidateFields.onlyNumber(txtPrice);
 		add(txtPrice, gbc);
 
 		gbc.insets.set(20, 130, 3, -60);
-		
+
 		gbc.gridx = 0;
 		gbc.gridy = 5;
 		gbc.gridwidth = 1;
@@ -158,18 +161,24 @@ public class JDialogAddProduct extends JDialog{
 		btnAdd = new JButton("Agregar producto", new ImageIcon(getClass().getResource("/img/check.png")));
 		btnAdd.setForeground(Color.WHITE);
 		btnAdd.setBackground(Color.decode("#062f3c"));
-		
+
 		btnAdd.addActionListener(Controller.getInstance());
 		btnAdd.setActionCommand(Actions.ADD_PRODUCT.name());
 		add(btnAdd, gbc);
 	}
-	
+
+	public Product getProductToDialog() {
+//		System.out.println((Genre)cbxGenre.getSelectedIndex());
+		return Company.createProduct(Integer.parseInt(txtRef.getText()), 
+				txtLine.getText(), txtReference.getText(),
+				(Genre)cbxGenre.getSelectedItem(), Double.parseDouble(txtPrice.getText()));
+	}
+
 	public void cleanFields() {
 		txtLine.setText("");
-		txtRef.setText("");
+		txtRef.setText("0");
 		txtReference.setText("");
-		txtTarget.setText("");
-		txtPrice.setText("");
+		txtPrice.setText("0");
 		cbxGenre.setSelectedItem(Genre.UNSPECIFIED);
 	}
 }
