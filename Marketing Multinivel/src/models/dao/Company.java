@@ -7,20 +7,20 @@ import models.entities.Genre;
 import models.entities.Order;
 import models.entities.Partner;
 import models.entities.Product;
+import structureData.NTree;
 import structureData.NodeSimpleList;
-import structureData.NodeTreeK_ary;
+import structureData.NodeNario;
 import structureData.SimpleList;
-import structureData.TreeK_ary;
 
 public class Company {
 
 	private SimpleList<Order> orderList;
-	private TreeK_ary<Partner> partnersTree;
+	private NTree<Partner> partnersTree;
 	private SimpleList<Product> productList;
 
 	public Company() {
 		this.orderList = new SimpleList<>();
-		this.partnersTree = new TreeK_ary<>();
+		this.partnersTree = new NTree<>();
 		this.productList = new SimpleList<>();
 	}
 
@@ -82,40 +82,40 @@ public class Company {
 		productList.remove(productToDelete);
 	}
 
-	public Partner searchPartner(int id) {
-		NodeTreeK_ary<Partner> node = partnersTree.getRoot();
-		if (node == null) {
-			System.out.println("null raiz");
-			return null;
-		} else {
-			if (node.getInfo().getId() == id) {
-				return node.getInfo();
-			} else {
-				node = node.getFirtsSon();
-				return findSearch(node, id).getInfo();
-			}
-		}
-	}
-	
-	private NodeTreeK_ary<Partner> findSearch(NodeTreeK_ary<Partner> father, int info) {
-		NodeTreeK_ary<Partner> nodeAux = father;
-		while (nodeAux != null) {
-			if (nodeAux.getInfo().getId() == info) {
-				return nodeAux;
-			} else {
-				while (nodeAux != null) {
-					if (nodeAux.getInfo().getId() == info) {
-						return nodeAux;
-					} else {
-						nodeAux = nodeAux.getNextBrother();
-						return findSearch(nodeAux, info);
-					}
-				}
-				nodeAux = nodeAux.getFirtsSon();
-			}
-		}
-		return null;
-	}
+//	public Partner searchPartner(int id) {
+//		NodeNario<Partner> node = partnersTree.getRoot();
+//		if (node == null) {
+//			System.out.println("null raiz");
+//			return null;
+//		} else {
+//			if (node.getInfo().getId() == id) {
+//				return node.getInfo();
+//			} else {
+//				node = node.getFirtsSon();
+//				return findSearch(node, id).getInfo();
+//			}
+//		}
+//	}
+//	
+//	private NodeTreeK_ary<Partner> findSearch(NodeTreeK_ary<Partner> father, int info) {
+//		NodeTreeK_ary<Partner> nodeAux = father;
+//		while (nodeAux != null) {
+//			if (nodeAux.getInfo().getId() == info) {
+//				return nodeAux;
+//			} else {
+//				while (nodeAux != null) {
+//					if (nodeAux.getInfo().getId() == info) {
+//						return nodeAux;
+//					} else {
+//						nodeAux = nodeAux.getNextBrother();
+//						return findSearch(nodeAux, info);
+//					}
+//				}
+//				nodeAux = nodeAux.getFirtsSon();
+//			}
+//		}
+//		return null;
+//	}
 
 	public Order searchOrder(int id) throws ErrorNotFound{
 		NodeSimpleList<Order> auxOrder = orderList.getHead();
@@ -140,7 +140,7 @@ public class Company {
 	}
 
 	public void editPartner(int idOldPartner, Partner newPartner) throws Exception {
-		searchPartner(idOldPartner).editParnet(newPartner);
+		//searchPartner(idOldPartner).editParnet(newPartner);
 	}
 
 	public void editOrder(int idOldOrder, Order newOrder) throws ErrorNotFound{
