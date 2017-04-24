@@ -140,7 +140,7 @@ public class Company {
 	}
 
 	public void editPartner(int idOldPartner, Partner newPartner) throws Exception {
-		// TO-DO
+		searchPartner(idOldPartner).editParnet(newPartner);
 	}
 
 	public void editOrder(int idOldOrder, Order newOrder) throws ErrorNotFound{

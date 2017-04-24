@@ -2,7 +2,7 @@ package models.entities;
 
 import java.util.Date;
 
-public class Partner {
+public class Partner{
 
 	private int id;
 	private Date registerDate;
@@ -25,6 +25,18 @@ public class Partner {
 		this.birthday = birthday;
 		this.stratum = stratum;
 		this.parent = parent;
+	}
+	
+	public void editParnet(Partner partner) {
+		this.registerDate = partner.registerDate;
+		this.idLegal = partner.idLegal;
+		this.name =partner.name;
+		this.surname = partner.surname;
+		this.genre = partner.genre;
+		this.birthday = partner.birthday;
+		this.stratum = partner.stratum;
+		this.parent = partner.parent;	
+
 	}
 
 	public int getId() {
