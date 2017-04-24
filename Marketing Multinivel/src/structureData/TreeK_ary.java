@@ -21,6 +21,20 @@ public class TreeK_ary<T> {
 			}
 		}
 	}
+	
+    /**
+     * agrega la informacion a la raiz, solo permite crear una raiz
+     *
+     * @param info
+     * @return
+     */
+    public boolean add(T info) {
+        if (root == null) {
+            this.root = new NodeTreeK_ary<>(info);
+            return true;
+        }
+        return false;
+    }
 
 	/**
 	 * busca y retorna el nodo padre dentro del arbol n-ario.
