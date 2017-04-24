@@ -53,7 +53,7 @@ public class PartnerInFile extends Partner{
 		file.writeInt(getIdLegal());
 		writeString(file, getName(), 16);
 		writeString(file, getSurname(), 16);
-		writeString(file, getGenre().name(), 8);
+		writeString(file, getGenre().getNameGenre(), 8);
 	
 		dateFormat  = DateFormat.getDateInstance(DateFormat.LONG);
 		writeString(file, dateFormat.format(getBirthday()), 32);
