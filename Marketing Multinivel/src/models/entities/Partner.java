@@ -27,6 +27,10 @@ public class Partner{
 		this.parent = parent;
 	}
 	
+	public Partner() {
+
+	}
+	
 	public void editParnet(Partner partner) {
 		this.registerDate = partner.registerDate;
 		this.idLegal = partner.idLegal;

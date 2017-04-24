@@ -1,0 +1,64 @@
+package persistence;
+
+import java.io.IOException;
+import java.io.RandomAccessFile;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.util.Date;
+
+import models.entities.Genre;
+import models.entities.Partner;
+
+public class PartnerInFile extends Partner{
+	
+	public final static int SIZE_REGISTER_PARTNER = 330;
+
+	public PartnerInFile(int id, Date registerDate, int idLegal, String name, String surname, Genre genre,
+			Date birthday, int stratum, int parent) {
+		super(id, registerDate, idLegal, name, surname, genre, birthday, stratum, parent);
+	}
+	
+	public PartnerInFile() {
+
+	}
+	
+
+	public void read(RandomAccessFile file) throws IOException, ParseException{
+		DateFormat dateFormat;
+		setName(readString(file, 32));
+		
+		dateFormat = DateFormat.getDateInstance(DateFormat.LONG);
+		setBirthday(dateFormat.parse(readString(file, 32)));
+		
+		setParent(file.readInt());
+	}
+	
+	private String readString(RandomAccessFile file, int size) throws IOException{
+		char field[] = new char[size];
+		
+		for (int i = 0; i < size; i++) {
+			field[i] = file.readChar();
+		}
+		
+		return new String(field).replace('\0', ' ');
+	}
+	
+	public void write(RandomAccessFile file) throws IOException{
+		DateFormat dateFormat ;
+		
+		writeString(file, getName(), 32);
+		writeString(file, getSurname(), 16);
+	
+		dateFormat  = DateFormat.getDateInstance(DateFormat.LONG);
+		writeString(file, dateFormat.format(getBirthday()), 32);
+	}
+	
+	private void writeString(RandomAccessFile file, String chain, int size) throws IOException{
+		StringBuffer buffer = new StringBuffer();
+		if (chain != null) 
+			buffer.append(chain);
+		buffer.setLength(size);
+		file.writeChars(buffer.toString());
+	}
+	
+}
