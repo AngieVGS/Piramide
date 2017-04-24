@@ -8,6 +8,7 @@ import models.entities.Order;
 import models.entities.Partner;
 import models.entities.Product;
 import structureData.NodeSimpleList;
+import structureData.NodeTreeK_ary;
 import structureData.SimpleList;
 import structureData.TreeK_ary;
 
@@ -82,7 +83,37 @@ public class Company {
 	}
 
 	public Partner searchPartner(int id) {
-		// TO-DO FIND
+		NodeTreeK_ary<Partner> node = partnersTree.getRoot();
+		if (node == null) {
+			System.out.println("null raiz");
+			return null;
+		} else {
+			if (node.getInfo().getId() == id) {
+				return node.getInfo();
+			} else {
+				node = node.getFirtsSon();
+				return findSearch(node, id).getInfo();
+			}
+		}
+	}
+	
+	private NodeTreeK_ary<Partner> findSearch(NodeTreeK_ary<Partner> father, int info) {
+		NodeTreeK_ary<Partner> nodeAux = father;
+		while (nodeAux != null) {
+			if (nodeAux.getInfo().getId() == info) {
+				return nodeAux;
+			} else {
+				while (nodeAux != null) {
+					if (nodeAux.getInfo().getId() == info) {
+						return nodeAux;
+					} else {
+						nodeAux = nodeAux.getNextBrother();
+						return findSearch(nodeAux, info);
+					}
+				}
+				nodeAux = nodeAux.getFirtsSon();
+			}
+		}
 		return null;
 	}
 

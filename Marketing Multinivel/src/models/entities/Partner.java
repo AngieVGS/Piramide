@@ -16,7 +16,6 @@ public class Partner {
 
 	public Partner(int id, Date registerDate, int idLegal, String name, String surname, Genre genre, Date birthday,
 			int stratum, int parent) {
-		super();
 		this.id = id;
 		this.registerDate = registerDate;
 		this.idLegal = idLegal;
