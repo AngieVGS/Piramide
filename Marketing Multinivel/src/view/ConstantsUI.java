@@ -6,6 +6,12 @@ import java.awt.Font;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
+/**
+ * Clase para el manejo de las constantes de interface grafica.
+ * 
+ * @author
+ *
+ */
 public class ConstantsUI {
 
 	public static final ImageIcon IMG_ICON = new ImageIcon("src/img/marketing.png");

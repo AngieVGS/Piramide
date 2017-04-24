@@ -9,6 +9,12 @@ import javax.swing.JMenuItem;
 import controller.Actions;
 import controller.Controller;
 
+/**
+ * Crea un JMenuBar para la ventana principal de adminstrador.
+ * 
+ * @author
+ *
+ */
 public class MenuBar extends JMenuBar {
 
 	private static final long serialVersionUID = 1L;
@@ -22,7 +28,7 @@ public class MenuBar extends JMenuBar {
 		itemAddPartner.addActionListener(Controller.getInstance());
 		itemAddPartner.setActionCommand(Actions.SHOW_DIALOG_ADD_PARTNER.name());
 		menuFile.add(itemAddPartner);
-		
+
 		JMenuItem itemAddProduct = new JMenuItem(ConstantsUI.SENTENCE_ADD_PRODUCT);
 		itemAddProduct.setBackground(Color.WHITE);
 		itemAddProduct.addActionListener(Controller.getInstance());

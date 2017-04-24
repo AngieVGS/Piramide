@@ -14,6 +14,11 @@ import models.entities.Order;
 import models.entities.Partner;
 import models.entities.Product;
 
+/**
+ * Ventana principal de administrador.
+ * 
+ * @author
+ */
 public class JFrameManager extends JFrame {
 
 	private static final long serialVersionUID = 1L;
@@ -40,8 +45,9 @@ public class JFrameManager extends JFrame {
 		setJMenuBar(menuBar);
 
 		Object[] columnsPartners = new Object[] { ConstantsUI.SENTENCE_ID_PARTNER, ConstantsUI.SENTENCE_REGISTER,
-				ConstantsUI.SENTENCE_ID_LEGAL, ConstantsUI.SENTENCE_FIRST_NAME, ConstantsUI.SENTENCE_LAST_NAME, ConstantsUI.SENTENCE_GENRE,
-				ConstantsUI.SENTENCE_NACIMIENTO, ConstantsUI.SENTENCE_STATUS, ConstantsUI.SENTENCE_PARENT };
+				ConstantsUI.SENTENCE_ID_LEGAL, ConstantsUI.SENTENCE_FIRST_NAME, ConstantsUI.SENTENCE_LAST_NAME,
+				ConstantsUI.SENTENCE_GENRE, ConstantsUI.SENTENCE_NACIMIENTO, ConstantsUI.SENTENCE_STATUS,
+				ConstantsUI.SENTENCE_PARENT };
 		Object[] columnsProducts = new Object[] { ConstantsUI.SENTENCE_ID_PRODUCT, ConstantsUI.SENTENCE_LINEA,
 				ConstantsUI.SENTENCE_REFERENCE, ConstantsUI.SENTENCE_TARGET, ConstantsUI.SENTENCE_VALUE };
 		Object[] columnsOrders = new Object[] { ConstantsUI.SENTENCE_ID_ORDER, ConstantsUI.SENTENCE_DATE,
@@ -104,19 +110,36 @@ public class JFrameManager extends JFrame {
 		add(pnCentralPartner, BorderLayout.CENTER);
 		setVisible(true);
 	}
-	
+
+	/**
+	 * Agrega Socio especificado a la tabla y refresca.
+	 * 
+	 * @param partner
+	 */
 	public void addPartnerToTable(Partner partner) {
-//		partnersModel.addRow(partner.getPartner());
+		// partnersModel.addRow(partner.getPartner());
 		tabs.setSelectedIndex(0);
 	}
 
+	/**
+	 * Agrega el producto especificado a la tabla y refresca.
+	 * 
+	 * @param product
+	 */
 	public void addProductToTable(Product product) {
 		productsModel.addRow(product.getProduct());
 		tabs.setSelectedIndex(1);
+		// TODO: refrescar tabla.
 	}
 
+	/**
+	 * Agrega la orden especificado a la tabla y refresca.
+	 * 
+	 * @param order
+	 */
 	public void addOrderToTable(Order order) {
-//		ordersModel.addRow(order.getTable());
+		// ordersModel.addRow(order.getTable());
 		tabs.setSelectedIndex(2);
+		// TODO: Terminar.
 	}
 }

@@ -22,6 +22,12 @@ import exceptions.ValidateFields;
 import models.entities.Genre;
 import models.entities.Partner;
 
+/**
+ * Dialogo para agregar Socio.
+ * 
+ * @author
+ *
+ */
 public class JdialogAddPartner extends JDialog {
 	private static final long serialVersionUID = 1L;
 	private JLabel lbId, lbpartner;
@@ -249,7 +255,7 @@ public class JdialogAddPartner extends JDialog {
 		gbc.weightx = 2.0;
 		gbc.weighty = 1;
 		gbc.fill = GridBagConstraints.BOTH;
-		
+
 		btnAdd = new JButton("Agregar socio", new ImageIcon(getClass().getResource("/img/check.png")));
 		btnAdd.setForeground(Color.WHITE);
 		btnAdd.setBackground(Color.decode("#062f3c"));
@@ -258,6 +264,9 @@ public class JdialogAddPartner extends JDialog {
 		add(btnAdd, gbc);
 	}
 
+	/**
+	 * Borra todos los campos del dialogo.
+	 */
 	public void cleanFields() {
 		txtId.setText("");
 		txtIdLegal.setText("");
@@ -270,8 +279,15 @@ public class JdialogAddPartner extends JDialog {
 		birthDate.setDate(null);
 	}
 
+	/**
+	 * Crea un nuevo socio con la informacion del dialogo y lo retorna.
+	 * 
+	 * @return
+	 */
 	public Partner getCreatedPerson() {
-		return new Partner(Integer.parseInt(txtId.getText()), registerDate.getDate(), Integer.parseInt(txtIdLegal.getText()), txtName.getText(), txtSurname.getText(),
-				(Genre) cbxGenre.getSelectedItem(), birthDate.getDate(), Integer.parseInt(spinerStratum.getValue().toString()), Integer.parseInt(txtPartner.getText()));
+		return new Partner(Integer.parseInt(txtId.getText()), registerDate.getDate(),
+				Integer.parseInt(txtIdLegal.getText()), txtName.getText(), txtSurname.getText(),
+				(Genre) cbxGenre.getSelectedItem(), birthDate.getDate(),
+				Integer.parseInt(spinerStratum.getValue().toString()), Integer.parseInt(txtPartner.getText()));
 	}
 }

@@ -42,6 +42,9 @@ public class Controller implements ActionListener {
 		}
 	}
 
+	/**
+	 * Muestra el dialogo Agregaar Producto
+	 */
 	private void showDialogAddProduct() {
 		jDialogAddProduct = new JDialogAddProduct();
 		jDialogAddProduct.setVisible(true);
@@ -55,6 +58,9 @@ public class Controller implements ActionListener {
 		jdialogAddPartner.setVisible(true);
 	}
 
+	/**
+	 * Agrega producto a la tabla.
+	 */
 	private void addProduct() {
 		jDialogAddProduct.setVisible(false);
 		Product product = jDialogAddProduct.getProductToDialog();

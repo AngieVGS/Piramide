@@ -2,12 +2,8 @@ package test;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Date;
 
-import models.entities.Genre;
-import models.entities.Partner;
 import persistence.ManagerPartners;
-import persistence.PartnerInFile;
 
 public class dataTypes {
 
@@ -41,7 +37,6 @@ public class dataTypes {
 		try {
 			managerPartners.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

@@ -19,12 +19,22 @@ import models.dao.Company;
 import models.entities.Genre;
 import models.entities.Product;
 
+/**
+ * Dialogo para agregar un nuevo producto, esfecifica referencia, linea, target,
+ * descripcion y precio.
+ * 
+ * @author
+ *
+ */
 public class JDialogAddProduct extends JDialog {
 	private static final long serialVersionUID = 1L;
 	private JTextField txtRef, txtLine, txtReference, txtPrice;
 	private JComboBox<Genre> cbxGenre;
 	private JButton btnAdd;
 
+	/**
+	 * Constructor Dialogo.
+	 */
 	public JDialogAddProduct() {
 		setSize(500, 350);
 		setModal(true);
@@ -167,13 +177,19 @@ public class JDialogAddProduct extends JDialog {
 		add(btnAdd, gbc);
 	}
 
+	/**
+	 * Crea un nuevo producto con las celdas del dialogo y lo retorna.
+	 * 
+	 * @return
+	 */
 	public Product getProductToDialog() {
-//		System.out.println((Genre)cbxGenre.getSelectedIndex());
-		return Company.createProduct(Integer.parseInt(txtRef.getText()), 
-				txtLine.getText(), txtReference.getText(),
-				(Genre)cbxGenre.getSelectedItem(), Double.parseDouble(txtPrice.getText()));
+		return Company.createProduct(Integer.parseInt(txtRef.getText()), txtLine.getText(), txtReference.getText(),
+				(Genre) cbxGenre.getSelectedItem(), Double.parseDouble(txtPrice.getText()));
 	}
 
+	/**
+	 * Borra todos los campos.
+	 */
 	public void cleanFields() {
 		txtLine.setText("");
 		txtRef.setText("0");
