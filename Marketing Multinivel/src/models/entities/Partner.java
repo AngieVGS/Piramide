@@ -2,6 +2,9 @@ package models.entities;
 
 import java.util.Date;
 
+import controller.Controller;
+import view.PanelActionsTable;
+
 /**
  * 
  * @author Yuliana Boyaca, Viviana Galindo, Dayan Ramirez, sebastian Rodriguez, Daniela Torres
@@ -130,7 +133,7 @@ public class Partner {
 	}
 
 	public Object[] getPartner() {
-		return new Object[] { id, registerDate, idLegal, name, surname, genre, birthday, stratum, parent };
+		return new Object[] { id, registerDate, idLegal, name, surname, genre, birthday, stratum, parent, new PanelActionsTable()};
 	}
 
 	@Override

@@ -33,6 +33,7 @@ public class ConstantsUI {
 	public static final String SENTENCE_ID_PRODUCT = "Id producto";
 	public static final String SENTENCE_QUANTITY = "Quantity";
 	public static final String SENTENCE_STATE = "State";
+	public static final String ACTIONS = "Actions";
 	public static final Color COLOR_FOUND = Color.decode("#00405d");
 	public static final Color COLOR_TABLE_MANAGER = Color.decode("#062f3c");
 	public static final Font FONT_LETTER_TABLE = new Font("Ahaori", Font.BOLD, 18);

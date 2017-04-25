@@ -8,8 +8,10 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
+import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 
+import controller.Controller;
 import models.entities.Order;
 import models.entities.Partner;
 import models.entities.Product;
@@ -48,7 +50,7 @@ public class JFrameManager extends JFrame {
 		Object[] columnsPartners = new Object[] { ConstantsUI.SENTENCE_ID_PARTNER, ConstantsUI.SENTENCE_REGISTER,
 				ConstantsUI.SENTENCE_ID_LEGAL, ConstantsUI.SENTENCE_FIRST_NAME, ConstantsUI.SENTENCE_LAST_NAME,
 				ConstantsUI.SENTENCE_GENRE, ConstantsUI.SENTENCE_NACIMIENTO, ConstantsUI.SENTENCE_STATUS,
-				ConstantsUI.SENTENCE_PARENT };
+				ConstantsUI.SENTENCE_PARENT, ConstantsUI.ACTIONS };
 		Object[] columnsProducts = new Object[] { ConstantsUI.SENTENCE_ID_PRODUCT, ConstantsUI.SENTENCE_LINEA,
 				ConstantsUI.SENTENCE_REFERENCE, ConstantsUI.SENTENCE_TARGET, ConstantsUI.SENTENCE_VALUE };
 		Object[] columnsOrders = new Object[] { ConstantsUI.SENTENCE_ID_ORDER, ConstantsUI.SENTENCE_DATE,
@@ -60,13 +62,12 @@ public class JFrameManager extends JFrame {
 
 		partnersModel = new DefaultTableModel();
 		partnersModel.setColumnIdentifiers(columnsPartners);
-		tbParner = new JTable(partnersModel) {
-			private static final long serialVersionUID = 1L;
-
-			public boolean isCellEditable(int row, int column) {
-				return false;
-			};
-		};
+		TableRender model = new TableRender();
+        CellEditorTable cellEditor = new CellEditorTable(Controller.getInstance());
+        model.setHorizontalAlignment(SwingConstants.CENTER);
+		tbParner = new JTable(partnersModel);
+		tbParner.setDefaultRenderer(Object.class, model);
+        tbParner.setDefaultEditor(Object.class, cellEditor);
 
 		tbParner.getTableHeader().setBackground(ConstantsUI.COLOR_TABLE_MANAGER);
 		tbParner.getTableHeader().setFont(ConstantsUI.FONT_LETTER_TABLE);
@@ -81,13 +82,8 @@ public class JFrameManager extends JFrame {
 
 		productsModel = new DefaultTableModel();
 		productsModel.setColumnIdentifiers(columnsProducts);
-		tbProducts = new JTable(productsModel) {
-			private static final long serialVersionUID = 1L;
+		tbProducts = new JTable(productsModel);
 
-			public boolean isCellEditable(int row, int column) {
-				return false;
-			};
-		};
 		tbProducts.getTableHeader().setBackground(ConstantsUI.COLOR_TABLE_MANAGER);
 		tbProducts.getTableHeader().setFont(ConstantsUI.FONT_LETTER_TABLE);
 		tbProducts.getTableHeader().setForeground(Color.WHITE);
@@ -101,13 +97,7 @@ public class JFrameManager extends JFrame {
 
 		ordersModel = new DefaultTableModel();
 		ordersModel.setColumnIdentifiers(columnsOrders);
-		tbOrders = new JTable(ordersModel) {
-			private static final long serialVersionUID = 1L;
-
-			public boolean isCellEditable(int row, int column) {
-				return false;
-			};
-		};
+		tbOrders = new JTable(ordersModel);
 
 		tbOrders.getTableHeader().setBackground(ConstantsUI.COLOR_TABLE_MANAGER);
 		tbOrders.getTableHeader().setFont(ConstantsUI.FONT_LETTER_TABLE);
