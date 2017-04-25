@@ -2,8 +2,14 @@ package models.entities;
 
 import java.util.Date;
 
+/**
+ * 
+ * @author Yuliana Boyaca, Viviana Galindo, Dayan Ramirez, sebastian Rodriguez, Daniela Torres
+ *
+ */
 public class Partner {
 
+	private static int idConsecutive = 1;
 	private int id;
 	private Date registerDate;
 	private int idLegal;
@@ -14,9 +20,9 @@ public class Partner {
 	private int stratum;
 	private int parent;
 
-	public Partner(int id, Date registerDate, int idLegal, String name, String surname, Genre genre, Date birthday,
+	public Partner(Date registerDate, int idLegal, String name, String surname, Genre genre, Date birthday,
 			int stratum, int parent) {
-		this.id = id;
+		this.id = idConsecutive++;
 		this.registerDate = registerDate;
 		this.idLegal = idLegal;
 		this.name = name;
@@ -113,6 +119,10 @@ public class Partner {
 
 	public void setParent(int parent) {
 		this.parent = parent;
+	}
+	
+	public static int getIdConsecutive() {
+		return idConsecutive;
 	}
 
 	public Object[] getPartner() {

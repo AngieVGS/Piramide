@@ -3,6 +3,7 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import models.dao.Company;
 import models.entities.Partner;
 import models.entities.Product;
 import view.JDialogAddProduct;
@@ -15,6 +16,7 @@ public class Controller implements ActionListener {
 	private JFrameManager jFrameManager;
 	private JdialogAddPartner jdialogAddPartner;
 	private JDialogAddProduct jDialogAddProduct;
+	private Company company;
 
 	public static Controller getInstance() {
 		if (controller == null) {
@@ -73,13 +75,20 @@ public class Controller implements ActionListener {
 	 * Agrega socio a la logica y a la tabla para visualizacion.
 	 */
 	private void addPartner() {
-		jdialogAddPartner.setVisible(false);
 		Partner partner = jdialogAddPartner.getCreatedPartner();
+			//company.searchPartner(9);
+		jdialogAddPartner.setVisible(false);
 		jFrameManager.addPartnerToTable(partner);
+		
 		jdialogAddPartner.cleanFields();
 	}
 
 	public void setjFrameManager(JFrameManager jFrameManager) {
 		this.jFrameManager = jFrameManager;
 	}
+
+	public void setCompany(Company company) {
+		this.company = company;
+	}
+	
 }

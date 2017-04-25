@@ -39,9 +39,9 @@ public class Company extends NTree{
 	 * @param parent
 	 * @return
 	 */
-	public static Partner createPartner(int id, Date registerDate, int idLegal, String name, String surname,
+	public static Partner createPartner(Date registerDate, int idLegal, String name, String surname,
 			Genre genre, Date birthday, int stratum, int parent) {
-		return new Partner(id, registerDate, idLegal, name, surname, genre, birthday, stratum, parent);
+		return new Partner(registerDate, idLegal, name, surname, genre, birthday, stratum, parent);
 	}
 
 

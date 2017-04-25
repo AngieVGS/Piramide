@@ -13,9 +13,9 @@ public class PartnerInFile extends Partner{
 	
 	public final static int SIZE_REGISTER_PARTNER = 330;
 
-	public PartnerInFile(int id, Date registerDate, int idLegal, String name, String surname, Genre genre,
+	public PartnerInFile(Date registerDate, int idLegal, String name, String surname, Genre genre,
 			Date birthday, int stratum, int parent) {
-		super(id, registerDate, idLegal, name, surname, genre, birthday, stratum, parent);
+		super(registerDate, idLegal, name, surname, genre, birthday, stratum, parent);
 	}
 	
 	public PartnerInFile() {

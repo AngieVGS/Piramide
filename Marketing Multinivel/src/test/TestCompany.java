@@ -17,11 +17,11 @@ public class TestCompany {
 		
 		Company company = new Company(new ComparatorPartner());
 		
-		Partner partner =  new Partner(01, new Date(), 01, "angie", "Galindo", Genre.FEMALE, new Date(), 100, 100);
-		Partner partner1 =  new Partner(02, new Date(), 02, "Yuliana", "Boyaca", Genre.FEMALE, new Date(), 100, 100);
-		Partner partner2 =  new Partner(03, new Date(), 03, "Sebastian", "Rodriguez", Genre.MALE, new Date(), 100, 100);
-		Partner partner3 =  new Partner(04, new Date(), 04, "Dayana", "Rodriguez", Genre.FEMALE, new Date(), 100, 100);
-		Partner partner4 =  new Partner(05, new Date(), 05, "Daniela", "Torres", Genre.FEMALE, new Date(), 100, 100);
+		Partner partner =  new Partner(new Date(), 01, "angie", "Galindo", Genre.FEMALE, new Date(), 100, 100);
+		Partner partner1 =  new Partner(new Date(), 02, "Yuliana", "Boyaca", Genre.FEMALE, new Date(), 100, 100);
+		Partner partner2 =  new Partner(new Date(), 03, "Sebastian", "Rodriguez", Genre.MALE, new Date(), 100, 100);
+		Partner partner3 =  new Partner(new Date(), 04, "Dayana", "Rodriguez", Genre.FEMALE, new Date(), 100, 100);
+		Partner partner4 =  new Partner(new Date(), 05, "Daniela", "Torres", Genre.FEMALE, new Date(), 100, 100);
 		try {
 			company.registerPartner(partner, null);
 			company.registerPartner(partner1, partner);

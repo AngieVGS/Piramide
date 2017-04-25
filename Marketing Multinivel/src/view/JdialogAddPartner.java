@@ -72,7 +72,8 @@ public class JdialogAddPartner extends JDialog {
 		gbc.weighty = 1.0;
 		gbc.fill = GridBagConstraints.BOTH;
 		txtId = new JTextField();
-		ValidateFields.onlyNumber(txtId);
+		txtId.setText("" + (Partner.getIdConsecutive()));
+		txtId.setEnabled(false);
 		add(txtId, gbc);
 
 		gbc.gridx = 0;
@@ -270,7 +271,7 @@ public class JdialogAddPartner extends JDialog {
 	 * Borra todos los campos del dialogo.
 	 */
 	public void cleanFields() {
-		txtId.setText("");
+		txtId.setText("" + Partner.getIdConsecutive());
 		txtIdLegal.setText("");
 		txtName.setText("");
 		txtSurname.setText("");
@@ -287,7 +288,7 @@ public class JdialogAddPartner extends JDialog {
 	 * @return
 	 */
 	public Partner getCreatedPartner() {
-		return new Partner(Integer.parseInt(txtId.getText()), registerDate.getDate(),
+		return new Partner(registerDate.getDate(),
 				Integer.parseInt(txtIdLegal.getText()), txtName.getText(), txtSurname.getText(),
 				(Genre) cbxGenre.getSelectedItem(), birthDate.getDate(),
 				Integer.parseInt(spinerStratum.getValue().toString()), Integer.parseInt(txtParent.getText()));
