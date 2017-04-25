@@ -5,15 +5,21 @@ import java.util.Date;
 
 import exceptions.RegisteredPartner;
 import models.entities.Genre;
+import models.entities.Order;
 import models.entities.Partner;
 import structureData.NTree;
+import structureData.NodeSimpleList;
+import structureData.SimpleList;
 
 @SuppressWarnings("rawtypes")
 public class Company extends NTree{
 	
+	private OrderManager orderManager;
+	
 	@SuppressWarnings("unchecked")
 	public Company(Comparator comparator) {
 		super(comparator);
+		this.orderManager = new OrderManager();
 	}
 
 	/**
@@ -58,4 +64,23 @@ public class Company extends NTree{
 		//searchPartner(idOldPartner).editParnet(newPartner);
 	}
 	
+	public SimpleList<Order> getOrdersOfAPartner(Partner partner) {
+		SimpleList<Order> orderList = new SimpleList<>();
+		NodeSimpleList<Order> aux = orderManager.getOrderList().getHead();
+		while (aux != null) {
+			if (aux.getInfo().getIdPartner() == partner.getId()) {
+				orderList.add(aux.getInfo());
+			}
+			aux = aux.getNext();
+		}
+		return orderList;
+	}
+
+	public OrderManager getOrderManager() {
+		return orderManager;
+	}
+
+	public void setOrderManager(OrderManager orderManager) {
+		this.orderManager = orderManager;
+	}
 }

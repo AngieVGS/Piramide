@@ -57,4 +57,9 @@ public class Order {
 		this.status = status;
 	}
 
+	@Override
+	public String toString() {
+		return "Order [registerId=" + registerId + ", date=" + date + ", idPartner=" + idPartner + ", codeProduct="
+				+ codeProduct + ", quantity=" + quantity + ", status=" + status + "]";
+	}
 }

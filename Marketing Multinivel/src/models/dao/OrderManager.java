@@ -80,4 +80,14 @@ public class OrderManager {
 			auxOrder = auxOrder.getNext();
 		}
 	}
+
+	public SimpleList<Order> getOrderList() {
+		return orderList;
+	}
+
+	public void setOrderList(SimpleList<Order> orderList) {
+		this.orderList = orderList;
+	}
+	
+	
 }

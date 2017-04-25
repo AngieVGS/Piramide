@@ -151,4 +151,12 @@ public class SimpleList<T> {
 		}
 		return count;
 	}
+	
+	public void imprimir() {
+		NodeSimpleList<T> aux = this.head;
+		while (aux != null) {
+			System.out.print(aux.getInfo().toString()+ "   ");
+			aux = aux.getNext();
+		}
+	}
 }
