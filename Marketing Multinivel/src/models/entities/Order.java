@@ -10,6 +10,8 @@ public class Order {
 	private int codeProduct;
 	private int quantity;
 	private int status;
+	public static final int ORDER_DEVOLUTION = 0;
+	public static final int ORDER_DELIVERED = 1;
 	
 	public Order(int registerId, Date date, int idPartner, int codeProduct, int quantity, int status) {
 		this.registerId = registerId;

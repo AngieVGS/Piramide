@@ -1,8 +1,11 @@
 package models.dao;
 
+import java.util.Calendar;
 import java.util.Comparator;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
+import exceptions.ErrorNotFound;
 import exceptions.RegisteredPartner;
 import models.entities.Genre;
 import models.entities.Order;
@@ -15,6 +18,7 @@ import structureData.SimpleList;
 public class Company extends NTree{
 	
 	private OrderManager orderManager;
+	private static final int MAXIMUM_RETURN_DAYS = 7;
 	
 	@SuppressWarnings("unchecked")
 	public Company(Comparator comparator) {
@@ -76,6 +80,15 @@ public class Company extends NTree{
 		return orderList;
 	}
 
+	public void registeReturn(Partner partner, Order order) throws ErrorNotFound{
+		Calendar c1 = Calendar.getInstance();
+		int day = c1.get(Calendar.DAY_OF_MONTH);
+		//falta cambiar a gregorian CALENDAR 
+		if (order.getIdPartner() == partner.getId() &&  day > 7 ) {
+			orderManager.searchOrder(order.getRegisterId()).setStatus(0);
+		}
+	}
+	
 	public OrderManager getOrderManager() {
 		return orderManager;
 	}
