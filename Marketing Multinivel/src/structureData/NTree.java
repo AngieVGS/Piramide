@@ -37,13 +37,17 @@ public class NTree<T> {
      * @return
      */
     public boolean add(T info) {
+    	boolean added = false;
         if (root == null) {
-            this.root = new NodeNario<>(info);
-            return true;
+            this.root = new NodeNario<>(info,null, root);
+            added = true;
+        }else{
+        	this.root.next = new NodeNario<T>(info, null, root.next);
+        	added = true;
         }
-        return false;
+        return added;
     }
-
+    
     /**
      *agrega la informacion indicada al padre que se indica por parametro
      * si el padre ya tiene hijos, lo agrega de primeras.

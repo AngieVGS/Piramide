@@ -83,7 +83,7 @@ public class Controller implements ActionListener {
 	 */
 	private void addPartner() {
 		Partner partner = jdialogAddPartner.getCreatedPartner();
-		if (company.searchPartner(partner.getParent()) != null || partner.getParent() == 0) {
+		if (partner.getParent() == 0 || company.searchPartner(partner.getParent()) != null) {
 			try {
 				company.registerPartner(partner);
 				jdialogAddPartner.setVisible(false);

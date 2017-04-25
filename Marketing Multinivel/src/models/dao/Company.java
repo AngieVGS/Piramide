@@ -3,7 +3,6 @@ package models.dao;
 import java.util.Calendar;
 import java.util.Comparator;
 import java.util.Date;
-import java.util.GregorianCalendar;
 
 import exceptions.ErrorNotFound;
 import exceptions.RegisteredPartner;
@@ -105,16 +104,12 @@ public class Company extends NTree{
 	 * @return
 	 */
 	public Partner searchPartner(int id) {
+		@SuppressWarnings("unchecked")
 		NodeNario<Partner> node = getRoot();
 		if (node == null) {
 			return null;
 		} else {
-			if (node.getInfo().getId() == id) {
-				return node.getInfo();
-			} else {
-				node = node.getFirst();
-				return find(node, id).getInfo();
-			}
+			return find(node, id).getInfo();
 		}
 	}
 
