@@ -81,8 +81,13 @@ public class JFrameManager extends JFrame {
 
 		productsModel = new DefaultTableModel();
 		productsModel.setColumnIdentifiers(columnsProducts);
-		tbProducts = new JTable(productsModel);
+		tbProducts = new JTable(productsModel) {
+			private static final long serialVersionUID = 1L;
 
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			};
+		};
 		tbProducts.getTableHeader().setBackground(ConstantsUI.COLOR_TABLE_MANAGER);
 		tbProducts.getTableHeader().setFont(ConstantsUI.FONT_LETTER_TABLE);
 		tbProducts.getTableHeader().setForeground(Color.WHITE);
