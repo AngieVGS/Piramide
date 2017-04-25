@@ -11,23 +11,29 @@ import models.entities.Genre;
 import models.entities.Order;
 import models.entities.Partner;
 
+/**
+ * 
+ * @author Yuliana Boyaca, Viviana Galindo, Dayan Ramirez, sebastian Rodriguez, Daniela Torres
+ *
+ */
 public class TestCompany {
 
 	public static void main(String[] args) {
 		
 		Company company = new Company(new ComparatorPartner());
 		
-		Partner partner =  new Partner(new Date(), 01, "angie", "Galindo", Genre.FEMALE, new Date(), 100, 100);
-		Partner partner1 =  new Partner(new Date(), 02, "Yuliana", "Boyaca", Genre.FEMALE, new Date(), 100, 100);
-		Partner partner2 =  new Partner(new Date(), 03, "Sebastian", "Rodriguez", Genre.MALE, new Date(), 100, 100);
-		Partner partner3 =  new Partner(new Date(), 04, "Dayana", "Rodriguez", Genre.FEMALE, new Date(), 100, 100);
-		Partner partner4 =  new Partner(new Date(), 05, "Daniela", "Torres", Genre.FEMALE, new Date(), 100, 100);
+		Partner partner =  new Partner(new Date(), 1, "angie", "Galindo", Genre.FEMALE, new Date(), 100, 0); //agrega como raiz
+		Partner partner1 =  new Partner(new Date(), 2, "Yuliana", "Boyaca", Genre.FEMALE, new Date(), 100, 1);//hijo del id 1
+		Partner partner2 =  new Partner(new Date(), 3, "Sebastian", "Rodriguez", Genre.MALE, new Date(), 100, 1);//hijo del id 1
+		Partner partner3 =  new Partner(new Date(), 4, "Dayana", "Rodriguez", Genre.FEMALE, new Date(), 100, 2);//hijo del id 2
+		Partner partner4 =  new Partner(new Date(), 5, "Daniela", "Torres", Genre.FEMALE, new Date(), 100, 4);//hijo del id 4
+		
 		try {
-			company.registerPartner(partner, null);
-			company.registerPartner(partner1, partner);
-			company.registerPartner(partner2, partner);
-			company.registerPartner(partner3, partner);
-			company.registerPartner(partner4, partner);
+			company.registerPartner(partner);
+			company.registerPartner(partner1);
+			company.registerPartner(partner2);
+			company.registerPartner(partner3);
+			company.registerPartner(partner4);
 		} catch (RegisteredPartner e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

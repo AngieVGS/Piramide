@@ -124,6 +124,10 @@ public class Partner {
 	public static int getIdConsecutive() {
 		return idConsecutive;
 	}
+	
+	public static void setIdConsecutive(int idConsecutive) {
+		Partner.idConsecutive = idConsecutive;
+	}
 
 	public Object[] getPartner() {
 		return new Object[] { id, registerDate, idLegal, name, surname, genre, birthday, stratum, parent };

@@ -3,6 +3,7 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import exceptions.RegisteredPartner;
 import models.dao.Company;
 import models.entities.Partner;
 import models.entities.Product;
@@ -10,6 +11,11 @@ import view.JDialogAddProduct;
 import view.JFrameManager;
 import view.JdialogAddPartner;
 
+/**
+ * 
+ * @author Yuliana Boyaca, Viviana Galindo, Dayan Ramirez, sebastian Rodriguez, Daniela Torres
+ *
+ */
 public class Controller implements ActionListener {
 
 	private static Controller controller;
@@ -76,11 +82,18 @@ public class Controller implements ActionListener {
 	 */
 	private void addPartner() {
 		Partner partner = jdialogAddPartner.getCreatedPartner();
-			//company.searchPartner(9);
-		jdialogAddPartner.setVisible(false);
-		jFrameManager.addPartnerToTable(partner);
-		
-		jdialogAddPartner.cleanFields();
+		if (company.searchPartner(partner.getParent()) != null||partner.getParent() == 0) {
+			try{
+				company.registerPartner(partner);
+				jdialogAddPartner.setVisible(false);
+				jFrameManager.addPartnerToTable(partner);
+				jdialogAddPartner.cleanFields();
+			} catch (RegisteredPartner e) {
+			}
+		}else{
+			JdialogAddPartner.showErrorPartner();
+			Partner.setIdConsecutive(Partner.getIdConsecutive()-1);
+		}
 	}
 
 	public void setjFrameManager(JFrameManager jFrameManager) {
@@ -90,5 +103,5 @@ public class Controller implements ActionListener {
 	public void setCompany(Company company) {
 		this.company = company;
 	}
-	
+
 }

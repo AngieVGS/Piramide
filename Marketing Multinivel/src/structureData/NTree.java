@@ -124,5 +124,8 @@ public class NTree<T> {
         }
     }
     
+    public NodeNario<T> getRoot() {
+		return root;
+	}
     
 }

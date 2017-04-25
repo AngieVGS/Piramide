@@ -34,4 +34,6 @@ public class NodeSimpleList<T> {
 	public void setNext(NodeSimpleList<T> next) {
 		this.next = next;
 	}
+	
+	
 }

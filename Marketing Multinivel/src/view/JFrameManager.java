@@ -36,6 +36,7 @@ public class JFrameManager extends JFrame {
 	public JFrameManager() {
 		setTitle(ConstantsUI.TITLE);
 		setSize(700, 700);
+		setExtendedState(EXIT_ON_CLOSE);
 		setLayout(new BorderLayout());
 		setExtendedState(MAXIMIZED_BOTH);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);

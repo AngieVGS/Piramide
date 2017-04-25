@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
@@ -292,5 +293,12 @@ public class JdialogAddPartner extends JDialog {
 				Integer.parseInt(txtIdLegal.getText()), txtName.getText(), txtSurname.getText(),
 				(Genre) cbxGenre.getSelectedItem(), birthDate.getDate(),
 				Integer.parseInt(spinerStratum.getValue().toString()), Integer.parseInt(txtParent.getText()));
+	}
+	
+	/**
+	 * muestra un mensaje cuando el id del socio no existe
+	 */
+	public static void showErrorPartner() {
+		JOptionPane.showMessageDialog(null, "¡El id correspondiente al padre no existe!");
 	}
 }

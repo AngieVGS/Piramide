@@ -11,6 +11,7 @@ import models.entities.Genre;
 import models.entities.Order;
 import models.entities.Partner;
 import structureData.NTree;
+import structureData.NodeNario;
 import structureData.NodeSimpleList;
 import structureData.SimpleList;
 
@@ -51,11 +52,12 @@ public class Company extends NTree{
 	 * @param partnerFather es el socio padre, es decir, quien refirio a partner
 	 * @throws RegisteredPartner 
 	 */
-	public void registerPartner(Partner partner, Partner partnerFather) throws RegisteredPartner {
-		if (findParent(partner) == null ) {
-			add(partner, partnerFather);	
+	@SuppressWarnings("unchecked")
+	public void registerPartner(Partner partner) throws RegisteredPartner {
+		if (partner.getParent() == 0) {
+			add(partner);
 		}else{
-			throw new RegisteredPartner();
+			add(partner, searchPartner(partner.getParent()));
 		}
 	}
 	
@@ -96,4 +98,54 @@ public class Company extends NTree{
 	public void setOrderManager(OrderManager orderManager) {
 		this.orderManager = orderManager;
 	}
+	
+	/**
+	 * busca  y retorna el socio con el id indicado
+	 * @param id
+	 * @return
+	 */
+	public Partner searchPartner(int id) {
+		NodeNario<Partner> node = getRoot();
+		if (node == null) {
+			return null;
+		} else {
+			if (node.getInfo().getId() == id) {
+				return node.getInfo();
+			} else {
+				node = node.getFirst();
+				return find(node, id).getInfo();
+			}
+		}
+	}
+
+    /**
+     * metodo recursivo para buscar
+     *
+     * @param nodeAux
+     * @param id
+     * @return
+     */
+    public NodeNario<Partner> find(NodeNario<Partner> nodeAux, int id) {
+        NodeNario<Partner> auxExit = null;
+        if (nodeAux != null) {
+            if (nodeAux.getInfo().getId() == id) {
+                return nodeAux;
+            } else {
+                if (nodeAux.getFirst() != null) {
+                    auxExit = find(nodeAux.getFirst(), id);
+                    if (auxExit != null) {
+                        return auxExit;
+                    }
+                }
+                if (nodeAux.getNext() != null) {
+                    auxExit = find(nodeAux.getNext(), id);
+                    if (auxExit != null) {
+                        return auxExit;
+                    }
+                }
+            }
+        }
+        return auxExit;
+    }
+
 }

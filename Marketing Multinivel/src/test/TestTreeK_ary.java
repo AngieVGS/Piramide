@@ -4,6 +4,11 @@ import java.util.Comparator;
 
 import structureData.NTree;
 
+/**
+ * 
+ * @author Yuliana Boyaca, Viviana Galindo, Dayan Ramirez, sebastian Rodriguez, Daniela Torres
+ *
+ */
 public class TestTreeK_ary {
 
 	public static void main(String[] args) {

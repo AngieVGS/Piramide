@@ -4,7 +4,11 @@ import controller.Controller;
 import models.comparator.ComparatorPartner;
 import models.dao.Company;
 import view.JFrameManager;
-
+/**
+ * 
+ * @author Yuliana Boyaca, Viviana Galindo, Dayan Ramirez, sebastian Rodriguez, Daniela Torres
+ *
+ */
 public class Run {
 
 	public static void main(String[] args) {
