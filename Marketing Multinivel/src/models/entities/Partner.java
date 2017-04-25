@@ -12,7 +12,7 @@ public class Partner {
 	private static int idConsecutive = 1;
 	private int id;
 	private Date registerDate;
-	private int idLegal;
+	private long idLegal;
 	private String name;
 	private String surname;
 	private Genre genre;
@@ -20,7 +20,7 @@ public class Partner {
 	private int stratum;
 	private int parent;
 
-	public Partner(Date registerDate, int idLegal, String name, String surname, Genre genre, Date birthday,
+	public Partner(Date registerDate, long idLegal, String name, String surname, Genre genre, Date birthday,
 			int stratum, int parent) {
 		this.id = idConsecutive++;
 		this.registerDate = registerDate;
@@ -81,11 +81,11 @@ public class Partner {
 		this.registerDate = registerDate;
 	}
 
-	public int getIdLegal() {
+	public long getIdLegal() {
 		return idLegal;
 	}
 
-	public void setIdLegal(int idLegal) {
+	public void setIdLegal(long idLegal) {
 		this.idLegal = idLegal;
 	}
 
