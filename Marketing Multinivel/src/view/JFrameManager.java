@@ -60,7 +60,13 @@ public class JFrameManager extends JFrame {
 
 		partnersModel = new DefaultTableModel();
 		partnersModel.setColumnIdentifiers(columnsPartners);
-		tbParner = new JTable(partnersModel);
+		tbParner = new JTable(partnersModel) {
+			private static final long serialVersionUID = 1L;
+
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			};
+		};
 
 		tbParner.getTableHeader().setBackground(ConstantsUI.COLOR_TABLE_MANAGER);
 		tbParner.getTableHeader().setFont(ConstantsUI.FONT_LETTER_TABLE);
