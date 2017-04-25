@@ -74,7 +74,7 @@ public class Controller implements ActionListener {
 	 */
 	private void addPartner() {
 		jdialogAddPartner.setVisible(false);
-		Partner partner = jdialogAddPartner.getCreatedPerson();
+		Partner partner = jdialogAddPartner.getCreatedPartner();
 		jFrameManager.addPartnerToTable(partner);
 		jdialogAddPartner.cleanFields();
 	}

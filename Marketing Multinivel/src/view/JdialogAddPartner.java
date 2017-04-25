@@ -25,13 +25,14 @@ import models.entities.Partner;
 /**
  * Dialogo para agregar Socio.
  * 
- * @author
+ * @author Yuliana Boyaca, Viviana Galindo, Dayan Ramirez, sebastian Rodriguez, Daniela Torres
+ * 
  *
  */
 public class JdialogAddPartner extends JDialog {
 	private static final long serialVersionUID = 1L;
 	private JLabel lbId, lbpartner;
-	private JTextField txtId, txtIdLegal, txtName, txtSurname, txtPartner;
+	private JTextField txtId, txtIdLegal, txtName, txtSurname, txtParent;
 	private JSpinner spinerStratum;
 	private JComboBox<Genre> cbxGenre;
 	private JButton btnAdd;
@@ -43,7 +44,7 @@ public class JdialogAddPartner extends JDialog {
 		setResizable(false);
 		setLocationRelativeTo(null);
 		setIconImage(new ImageIcon(getClass().getResource("/img/iconAdd.png")).getImage());
-		setTitle("Nuevo socio");
+		setTitle("New Partner");
 		setDefaultCloseOperation(HIDE_ON_CLOSE);
 		setLayout(new GridBagLayout());
 		getContentPane().setBackground(Color.WHITE);
@@ -81,7 +82,7 @@ public class JdialogAddPartner extends JDialog {
 		gbc.weightx = 1.0;
 		gbc.weighty = 0.0;
 		gbc.fill = GridBagConstraints.BOTH;
-		JLabel lbDateRegister = new JLabel("Fecha de registro: ");
+		JLabel lbDateRegister = new JLabel("Register: ");
 		lbDateRegister.setHorizontalAlignment(SwingConstants.RIGHT);
 		add(lbDateRegister, gbc);
 
@@ -102,7 +103,7 @@ public class JdialogAddPartner extends JDialog {
 		gbc.weightx = 1.0;
 		gbc.weighty = 0.0;
 		gbc.fill = GridBagConstraints.BOTH;
-		JLabel lbIdLegal = new JLabel("Id Legal: ");
+		JLabel lbIdLegal = new JLabel("Legal Id: ");
 		lbIdLegal.setHorizontalAlignment(SwingConstants.RIGHT);
 		add(lbIdLegal, gbc);
 
@@ -124,7 +125,7 @@ public class JdialogAddPartner extends JDialog {
 		gbc.weightx = 1.0;
 		gbc.weighty = 0.0;
 		gbc.fill = GridBagConstraints.BOTH;
-		JLabel lbNumberProduct = new JLabel("Nombre: ");
+		JLabel lbNumberProduct = new JLabel("Name: ");
 		lbNumberProduct.setHorizontalAlignment(SwingConstants.RIGHT);
 		add(lbNumberProduct, gbc);
 
@@ -146,7 +147,7 @@ public class JdialogAddPartner extends JDialog {
 		gbc.weightx = 1.0;
 		gbc.weighty = 0.0;
 		gbc.fill = GridBagConstraints.BOTH;
-		JLabel lbTypePerson = new JLabel("Apellido: ");
+		JLabel lbTypePerson = new JLabel("Surname: ");
 		lbTypePerson.setHorizontalAlignment(SwingConstants.RIGHT);
 		add(lbTypePerson, gbc);
 
@@ -168,7 +169,7 @@ public class JdialogAddPartner extends JDialog {
 		gbc.weightx = 5.0;
 		gbc.weighty = 1.0;
 		gbc.fill = GridBagConstraints.BOTH;
-		JLabel lbTypeProduct = new JLabel("Genero: ");
+		JLabel lbTypeProduct = new JLabel("Genre: ");
 		lbTypeProduct.setHorizontalAlignment(SwingConstants.RIGHT);
 		add(lbTypeProduct, gbc);
 
@@ -190,7 +191,7 @@ public class JdialogAddPartner extends JDialog {
 		gbc.weightx = 5.0;
 		gbc.weighty = 1.0;
 		gbc.fill = GridBagConstraints.BOTH;
-		JLabel lbDescription = new JLabel("Fecha de nacimiento: ");
+		JLabel lbDescription = new JLabel("Birthdate: ");
 		lbDescription.setHorizontalAlignment(SwingConstants.RIGHT);
 		add(lbDescription, gbc);
 
@@ -211,7 +212,7 @@ public class JdialogAddPartner extends JDialog {
 		gbc.weightx = 5.0;
 		gbc.weighty = 1.0;
 		gbc.fill = GridBagConstraints.BOTH;
-		JLabel lbValue = new JLabel("Estrato: ");
+		JLabel lbValue = new JLabel("Stratum: ");
 		lbValue.setHorizontalAlignment(SwingConstants.RIGHT);
 		add(lbValue, gbc);
 
@@ -225,7 +226,7 @@ public class JdialogAddPartner extends JDialog {
 		gbc.fill = GridBagConstraints.BOTH;
 		add(spinerStratum, gbc);
 
-		lbpartner = new JLabel("Socio: ");
+		lbpartner = new JLabel("Id Parent: ");
 		lbpartner.setHorizontalAlignment(SwingConstants.RIGHT);
 		gbc.gridx = 0;
 		gbc.gridy = 8;
@@ -243,8 +244,9 @@ public class JdialogAddPartner extends JDialog {
 		gbc.weightx = 5.0;
 		gbc.weighty = 1.0;
 		gbc.fill = GridBagConstraints.BOTH;
-		txtPartner = new JTextField();
-		add(txtPartner, gbc);
+		txtParent = new JTextField();
+		ValidateFields.onlyNumber(txtParent);
+		add(txtParent, gbc);
 
 		gbc.insets.set(20, 130, 2, -40);
 
@@ -272,7 +274,7 @@ public class JdialogAddPartner extends JDialog {
 		txtIdLegal.setText("");
 		txtName.setText("");
 		txtSurname.setText("");
-		txtPartner.setText("");
+		txtParent.setText("");
 		spinerStratum.setValue(1);
 		cbxGenre.setSelectedItem(Genre.UNSPECIFIED);
 		registerDate.setDate(null);
@@ -284,10 +286,10 @@ public class JdialogAddPartner extends JDialog {
 	 * 
 	 * @return
 	 */
-	public Partner getCreatedPerson() {
+	public Partner getCreatedPartner() {
 		return new Partner(Integer.parseInt(txtId.getText()), registerDate.getDate(),
 				Integer.parseInt(txtIdLegal.getText()), txtName.getText(), txtSurname.getText(),
 				(Genre) cbxGenre.getSelectedItem(), birthDate.getDate(),
-				Integer.parseInt(spinerStratum.getValue().toString()), Integer.parseInt(txtPartner.getText()));
+				Integer.parseInt(spinerStratum.getValue().toString()), Integer.parseInt(txtParent.getText()));
 	}
 }

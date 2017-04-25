@@ -15,7 +15,6 @@ import javax.swing.SwingConstants;
 import controller.Actions;
 import controller.Controller;
 import exceptions.ValidateFields;
-import models.dao.Company;
 import models.dao.ProductManager;
 import models.entities.Genre;
 import models.entities.Product;
@@ -24,8 +23,7 @@ import models.entities.Product;
  * Dialogo para agregar un nuevo producto, esfecifica referencia, linea, target,
  * descripcion y precio.
  * 
- * @author
- *
+ *  @author Yuliana Boyaca, Viviana Galindo, Dayan Ramirez, sebastian Rodriguez, Daniela Torres
  */
 public class JDialogAddProduct extends JDialog {
 	private static final long serialVersionUID = 1L;
@@ -42,7 +40,7 @@ public class JDialogAddProduct extends JDialog {
 		setResizable(false);
 		setLocationRelativeTo(null);
 		setIconImage(new ImageIcon(getClass().getResource("/img/product.png")).getImage());
-		setTitle("Nuevo producto");
+		setTitle("New product");
 		setDefaultCloseOperation(HIDE_ON_CLOSE);
 		setLayout(new GridBagLayout());
 		getContentPane().setBackground(Color.WHITE);
@@ -80,7 +78,7 @@ public class JDialogAddProduct extends JDialog {
 		gbc.weightx = 1.0;
 		gbc.weighty = 0.0;
 		gbc.fill = GridBagConstraints.BOTH;
-		JLabel lbLine = new JLabel("Linea: ");
+		JLabel lbLine = new JLabel("Line: ");
 		lbLine.setHorizontalAlignment(SwingConstants.RIGHT);
 		add(lbLine, gbc);
 
@@ -145,7 +143,7 @@ public class JDialogAddProduct extends JDialog {
 		gbc.weightx = 1.0;
 		gbc.weighty = 0.0;
 		gbc.fill = GridBagConstraints.BOTH;
-		JLabel lbPrice = new JLabel("Precio: ");
+		JLabel lbPrice = new JLabel("Price: ");
 		lbPrice.setHorizontalAlignment(SwingConstants.RIGHT);
 		add(lbPrice, gbc);
 
@@ -169,7 +167,7 @@ public class JDialogAddProduct extends JDialog {
 		gbc.weightx = 2.0;
 		gbc.weighty = 1;
 		gbc.fill = GridBagConstraints.BOTH;
-		btnAdd = new JButton("Agregar producto", new ImageIcon(getClass().getResource("/img/check.png")));
+		btnAdd = new JButton("Add product", new ImageIcon(getClass().getResource("/img/check.png")));
 		btnAdd.setForeground(Color.WHITE);
 		btnAdd.setBackground(Color.decode("#062f3c"));
 

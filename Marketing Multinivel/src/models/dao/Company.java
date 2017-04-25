@@ -3,16 +3,10 @@ package models.dao;
 import java.util.Comparator;
 import java.util.Date;
 
-import exceptions.ErrorNotFound;
 import exceptions.RegisteredPartner;
-import models.comparator.ComparatorPartner;
 import models.entities.Genre;
-import models.entities.Order;
 import models.entities.Partner;
-import models.entities.Product;
 import structureData.NTree;
-import structureData.NodeSimpleList;
-import structureData.SimpleList;
 
 @SuppressWarnings("rawtypes")
 public class Company extends NTree{
