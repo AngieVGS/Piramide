@@ -7,7 +7,6 @@ import java.awt.GridBagLayout;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JSpinner;
@@ -20,7 +19,6 @@ import com.toedter.calendar.JDateChooser;
 import controller.Actions;
 import controller.Controller;
 import exceptions.ValidateFields;
-import models.entities.Genre;
 import models.entities.Order;
 import models.entities.Partner;
 
@@ -191,7 +189,7 @@ public class JDialogRegisterOrder extends JDialog{
 		btnAdd.setForeground(Color.WHITE);
 		btnAdd.setBackground(Color.decode("#062f3c"));
 		btnAdd.addActionListener(Controller.getInstance());
-		btnAdd.setActionCommand(Actions.ADD_PARTNER.name());
+		btnAdd.setActionCommand(Actions.ADD_ORDER.name());
 		add(btnAdd, gbc);
 	}
 
@@ -208,7 +206,7 @@ public class JDialogRegisterOrder extends JDialog{
 	}
 
 	/**
-	 * Crea un nuevo socio con la informacion del dialogo y lo retorna.
+	 * Crea un nueva Orden con la informacion del dialogo y lo retorna.
 	 * 
 	 * @return
 	 */
@@ -216,10 +214,5 @@ public class JDialogRegisterOrder extends JDialog{
 		return new Order(Integer.parseInt(txtIdRegister.getText()),date.getDate(),Integer.parseInt(txtIdParnet.getText()),
 				Integer.parseInt(txtCodeProduct.getText()), Integer.parseInt(txtQuantity.getText()),
 				Integer.parseInt(spinerStratum.getValue().toString()));
-	}
-	
-	public static void main(String[] args) {
-	JDialogRegisterOrder dialogRegisterOrder = new JDialogRegisterOrder();
-	dialogRegisterOrder.setVisible(true);
 	}
 }
