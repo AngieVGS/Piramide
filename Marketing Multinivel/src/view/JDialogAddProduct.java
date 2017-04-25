@@ -16,6 +16,7 @@ import controller.Actions;
 import controller.Controller;
 import exceptions.ValidateFields;
 import models.dao.Company;
+import models.dao.ProductManager;
 import models.entities.Genre;
 import models.entities.Product;
 
@@ -183,7 +184,7 @@ public class JDialogAddProduct extends JDialog {
 	 * @return
 	 */
 	public Product getProductToDialog() {
-		return Company.createProduct(Integer.parseInt(txtRef.getText()), txtLine.getText(), txtReference.getText(),
+		return ProductManager.createProduct(Integer.parseInt(txtRef.getText()), txtLine.getText(), txtReference.getText(),
 				(Genre) cbxGenre.getSelectedItem(), Double.parseDouble(txtPrice.getText()));
 	}
 
