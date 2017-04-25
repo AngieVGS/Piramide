@@ -101,7 +101,13 @@ public class JFrameManager extends JFrame {
 
 		ordersModel = new DefaultTableModel();
 		ordersModel.setColumnIdentifiers(columnsOrders);
-		tbOrders = new JTable(ordersModel);
+		tbOrders = new JTable(ordersModel) {
+			private static final long serialVersionUID = 1L;
+
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			};
+		};
 
 		tbOrders.getTableHeader().setBackground(ConstantsUI.COLOR_TABLE_MANAGER);
 		tbOrders.getTableHeader().setFont(ConstantsUI.FONT_LETTER_TABLE);
