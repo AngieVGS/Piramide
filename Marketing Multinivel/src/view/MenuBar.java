@@ -34,6 +34,12 @@ public class MenuBar extends JMenuBar {
 		itemAddProduct.addActionListener(Controller.getInstance());
 		itemAddProduct.setActionCommand(Actions.SHOW_DIALOG_ADD_PRODUCT.name());
 		menuFile.add(itemAddProduct);
+		
+		JMenuItem itemLoadPersistence = new JMenuItem("Load data");
+		itemLoadPersistence.setBackground(Color.WHITE);
+		itemLoadPersistence.addActionListener(Controller.getInstance());
+		itemLoadPersistence.setActionCommand(Actions.LOAD_PERSISTENCE.name());
+		menuFile.add(itemLoadPersistence);
 
 		add(menuFile);
 	}

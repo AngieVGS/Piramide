@@ -60,15 +60,30 @@ public class Company extends NTree{
 		}
 	}
 	
+	/**
+	 * 
+	 * @param partnerToDelete
+	 */
 	public void deletePartner(Partner partnerToDelete) {
 		// TO-DO REMOVE
 		// partnersTree.remove(partnerToDelete);
 	}
 
+	/**
+	 * edita el padre
+	 * @param idOldPartner
+	 * @param newPartner
+	 * @throws Exception
+	 */
 	public void editPartner(int idOldPartner, Partner newPartner) throws Exception {
-		//searchPartner(idOldPartner).editParnet(newPartner);
+		searchPartner(idOldPartner).editParnet(newPartner);
 	}
 	
+	/**
+	 * obtiene las ordenes de un socio
+	 * @param partner
+	 * @return
+	 */
 	public SimpleList<Order> getOrdersOfAPartner(Partner partner) {
 		SimpleList<Order> orderList = new SimpleList<>();
 		NodeSimpleList<Order> aux = orderManager.getOrderList().getHead();

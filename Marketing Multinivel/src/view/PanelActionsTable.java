@@ -28,7 +28,7 @@ public class PanelActionsTable extends JPanel {
         btnDetails.setFont(new Font(TYPE_WORD, Font.PLAIN, T));
         btnDetails.setForeground(Color.WHITE);
         btnDetails.addActionListener(Controller.getInstance());
-      //  btnDetails.setActionCommand(Actions.SHOW_DIALOG_DETAILS.name());
+       btnDetails.setActionCommand(Actions.SHOW_ORDERS.name());
         add(btnDetails);
 
         JButton btnEdit = new JButton(new ImageIcon(getClass().getResource("/img/editar.png")));
@@ -38,17 +38,9 @@ public class PanelActionsTable extends JPanel {
         btnEdit.addActionListener(Controller.getInstance());
         btnEdit.setFont(new Font(TYPE_WORD, Font.PLAIN, T));
         btnEdit.setForeground(Color.WHITE);
-      //  btnEdit.setActionCommand(Actions.SHOW_DIALOG_EDIT.name());
+        btnEdit.setActionCommand(Actions.SHOW_DIALOG_EDIT_PARTNER.name());
         add(btnEdit);
 
-        JButton btnRemove = new JButton(new ImageIcon(getClass().getResource("/img/menos.png")));
-        btnRemove.setBorderPainted(false);
-        btnRemove.setToolTipText("Details");
-        btnRemove.setBackground(Color.WHITE);
-        btnRemove.setFont(new Font(TYPE_WORD, Font.PLAIN, T));
-        btnRemove.setForeground(Color.WHITE);
-        btnRemove.addActionListener(Controller.getInstance());
-       // btnRemove.setActionCommand(Actions.REMOVE_PERSON.name());
-        add(btnRemove);
+
     }
 }

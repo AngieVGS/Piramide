@@ -2,12 +2,17 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+
+import javax.swing.JFileChooser;
 
 import exceptions.RegisteredPartner;
 import models.dao.Company;
 import models.entities.Partner;
 import models.entities.Product;
+import persistence.FileManager;
 import view.JDialogAddProduct;
+import view.JDialogShowOrdersPartner;
 import view.JFrameManager;
 import view.JdialogAddPartner;
 
@@ -49,7 +54,62 @@ public class Controller implements ActionListener {
 		case SHOW_DIALOG_ADD_PRODUCT:
 			showDialogAddProduct();
 			break;
+		case EDIT_PARTNER:
+			editPartner();
+			break;
+		case SHOW_DIALOG_EDIT_PARTNER:
+			showDialogEditPartner();
+			break;
+		case SHOW_ORDERS:
+			showOrders();
+			break;
+		case LOAD_PERSISTENCE:
+			loadPersistence();
+			break;
 		}
+	}
+
+	/**
+	 * carga los datos de la persistencia
+	 */
+	private void loadPersistence() {
+		try {
+			FileManager fileManager = new FileManager(".\\src\\data\\multinivelSocios.csv");
+			Company company = fileManager.readToTree();
+			company.imprimir();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		jFrameManager.refreshTablePartner(company);
+	}
+
+	/**
+	 * muestra las ordenes del socio seleccionado
+	 */
+	private void showOrders() {
+		JDialogShowOrdersPartner  n  =  new JDialogShowOrdersPartner();
+		n.addOrderToTable(company.getOrdersOfAPartner(company.searchPartner(jFrameManager.getIdPartnerSelected())));
+	}
+
+	/**
+	 * Edita socio
+	 */
+	private void editPartner() {
+		try {
+			company.editPartner(jFrameManager.getIdPartnerSelected(), jdialogAddPartner.getCreatedPartner());
+			jFrameManager.refreshTablePartner(company);
+			jdialogAddPartner.cleanFields();
+			jdialogAddPartner.setVisible(false);
+		} catch (Exception e) {
+		}
+	}
+
+	/**
+	 * muestra dialogo Editar socio
+	 */
+	private void showDialogEditPartner() {
+		jdialogAddPartner.changeEdit(company.searchPartner(jFrameManager.getIdPartnerSelected()));
+		jdialogAddPartner.setVisible(true);
 	}
 
 	/**
@@ -65,6 +125,7 @@ public class Controller implements ActionListener {
 	 */
 	private void showDialogAddPartner() {
 		jdialogAddPartner = new JdialogAddPartner();
+		jdialogAddPartner.changeAdd();
 		jdialogAddPartner.setVisible(true);
 	}
 
@@ -87,7 +148,7 @@ public class Controller implements ActionListener {
 			try {
 				company.registerPartner(partner);
 				jdialogAddPartner.setVisible(false);
-				jFrameManager.addPartnerToTable(partner);
+				jFrameManager.refreshTablePartner(company);
 				jdialogAddPartner.cleanFields();
 			} catch (RegisteredPartner e) {
 			}

@@ -267,6 +267,41 @@ public class JdialogAddPartner extends JDialog {
 		btnAdd.setActionCommand(Actions.ADD_PARTNER.name());
 		add(btnAdd, gbc);
 	}
+	
+	/**
+	 * cambia el dialogo para editar
+	 * @param partner
+	 */
+	public void changeEdit(Partner partner){
+		txtId.setText("" + partner.getId());
+		txtIdLegal.setText(""+ partner.getId());
+		txtName.setText(""+ partner.getName());
+		txtSurname.setText(""+ partner.getSurname());
+		txtParent.setText(""+partner.getParent());
+		spinerStratum.setValue(partner.getStratum());
+		cbxGenre.setSelectedItem(partner.getGenre());
+		registerDate.setDate(partner.getRegisterDate());
+		birthDate.setDate(partner.getBirthday());
+		btnAdd.setText("Edit");
+		btnAdd.setActionCommand(Actions.EDIT_PARTNER.name());
+	}
+	
+	/**
+	 * cambia para agregar
+	 */
+	public void changeAdd(){
+		txtId.setText("" + Partner.getIdConsecutive());
+		txtIdLegal.setText("");
+		txtName.setText("");
+		txtSurname.setText("");
+		txtParent.setText("");
+		spinerStratum.setValue(1);
+		cbxGenre.setSelectedItem(Genre.UNSPECIFIED);
+		registerDate.setDate(null);
+		birthDate.setDate(null);
+		btnAdd.setText("Agregar socio");
+		btnAdd.setActionCommand(Actions.ADD_PARTNER.name());
+	}
 
 	/**
 	 * Borra todos los campos del dialogo.

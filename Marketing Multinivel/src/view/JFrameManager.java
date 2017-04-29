@@ -12,9 +12,11 @@ import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 
 import controller.Controller;
+import models.dao.Company;
 import models.entities.Order;
 import models.entities.Partner;
 import models.entities.Product;
+import structureData.NodeNario;
 
 /**
  * Ventana principal de administrador.
@@ -150,4 +152,33 @@ public class JFrameManager extends JFrame {
 		tabs.setSelectedIndex(2);
 		// TODO: Terminar.
 	}
+	
+	/**
+	 * devuelve el id del socio seleccionado
+	 * @return
+	 */
+	public int getIdPartnerSelected(){
+		return Integer.parseInt(partnersModel.getValueAt(tbParner.getSelectedRow(), 0).toString());
+	}
+	
+	  /**
+     * metodo de imprimir
+     */
+    @SuppressWarnings("unchecked")
+	public void refreshTablePartner(Company company) {
+    	partnersModel.setRowCount(0);
+    	refreshTablePartner(company.getRoot());
+    }
+
+    /**
+     * metodo recursivo que imprime todos los primeros y luego los siguientes o los hermanos
+     * @param nodeAux 
+     */
+    private void refreshTablePartner(NodeNario<Partner> nodeAux) {
+        if (nodeAux != null) {
+            addPartnerToTable(nodeAux.getInfo());
+            refreshTablePartner(nodeAux.getFirst());
+            refreshTablePartner(nodeAux.getNext());
+        }
+    }
 }
