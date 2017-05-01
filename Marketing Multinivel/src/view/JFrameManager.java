@@ -58,10 +58,10 @@ public class JFrameManager extends JFrame {
 		Object[] columnsOrders = new Object[] { ConstantsUI.SENTENCE_ID_ORDER, ConstantsUI.SENTENCE_DATE,
 				ConstantsUI.SENTENCE_ID_PARTNER, ConstantsUI.SENTENCE_QUANTITY, ConstantsUI.SENTENCE_STATE };
 
-		JPanel pnCentralPartner = new JPanel();
+		JPanel pnCentralPartner = new JPanel(new BorderLayout());
 		pnCentralPartner.setBackground(ConstantsUI.COLOR_FOUND);
 		GridSystem gridSystem = new GridSystem(pnCentralPartner);
-
+		
 		partnersModel = new DefaultTableModel();
 		partnersModel.setColumnIdentifiers(columnsPartners);
 		TableRender model = new TableRender();
@@ -174,7 +174,7 @@ public class JFrameManager extends JFrame {
      * metodo recursivo que imprime todos los primeros y luego los siguientes o los hermanos
      * @param nodeAux 
      */
-    private void refreshTablePartner(NodeNario<Partner> nodeAux) {
+     void refreshTablePartner(NodeNario<Partner> nodeAux) {
         if (nodeAux != null) {
             addPartnerToTable(nodeAux.getInfo());
             refreshTablePartner(nodeAux.getFirst());

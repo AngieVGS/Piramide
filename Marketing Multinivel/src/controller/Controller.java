@@ -4,15 +4,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
-import javax.swing.JFileChooser;
-
 import exceptions.RegisteredPartner;
 import models.dao.Company;
 import models.entities.Partner;
 import models.entities.Product;
 import persistence.FileManager;
 import view.JDialogAddProduct;
-import view.JDialogShowOrdersPartner;
 import view.JFrameManager;
 import view.JdialogAddPartner;
 
@@ -75,8 +72,7 @@ public class Controller implements ActionListener {
 	private void loadPersistence() {
 		try {
 			FileManager fileManager = new FileManager(".\\src\\data\\multinivelSocios.csv");
-			Company company = fileManager.readToTree();
-			company.imprimir();
+			company = fileManager.readToTree();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -87,8 +83,8 @@ public class Controller implements ActionListener {
 	 * muestra las ordenes del socio seleccionado
 	 */
 	private void showOrders() {
-		JDialogShowOrdersPartner  n  =  new JDialogShowOrdersPartner();
-		n.addOrderToTable(company.getOrdersOfAPartner(company.searchPartner(jFrameManager.getIdPartnerSelected())));
+//		JDialogShowOrdersPartner  n  =  new JDialogShowOrdersPartner();
+//		n.addOrderToTable(company.getOrdersOfAPartner(company.searchPartner(jFrameManager.getIdPartnerSelected())));
 	}
 
 	/**
@@ -108,7 +104,9 @@ public class Controller implements ActionListener {
 	 * muestra dialogo Editar socio
 	 */
 	private void showDialogEditPartner() {
-		jdialogAddPartner.changeEdit(company.searchPartner(jFrameManager.getIdPartnerSelected()));
+		jdialogAddPartner.changeEdit(
+				company.searchPartner
+				(jFrameManager.getIdPartnerSelected()));
 		jdialogAddPartner.setVisible(true);
 	}
 
@@ -116,7 +114,6 @@ public class Controller implements ActionListener {
 	 * Muestra el dialogo Agregaar Producto
 	 */
 	private void showDialogAddProduct() {
-		jDialogAddProduct = new JDialogAddProduct();
 		jDialogAddProduct.setVisible(true);
 	}
 
@@ -124,7 +121,6 @@ public class Controller implements ActionListener {
 	 * Crea y muestra el dialogo Agregar Socio
 	 */
 	private void showDialogAddPartner() {
-		jdialogAddPartner = new JdialogAddPartner();
 		jdialogAddPartner.changeAdd();
 		jdialogAddPartner.setVisible(true);
 	}
@@ -166,4 +162,11 @@ public class Controller implements ActionListener {
 		this.company = company;
 	}
 
+	public void setJdialogAddPartner(JdialogAddPartner jdialogAddPartner) {
+		this.jdialogAddPartner = jdialogAddPartner;
+	}
+
+	public void setjDialogAddProduct(JDialogAddProduct jDialogAddProduct) {
+		this.jDialogAddProduct = jDialogAddProduct;
+	}	
 }
